@@ -15,6 +15,7 @@ import { createStackNavigator,
 } from 'react-navigation';
 import AuthScreen from './src/screens/Auth';
 import HomeScreen from './src/screens/Home';
+import LessonsScreen from './src/screens/Lessons';
 import AuthLoadingScreen from './src/screens/AuthLoading';
 import TestsScreen from './src/screens/Tests';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -24,14 +25,34 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
     screen: HomeScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (<Icon name="ios-home" size={24}/>)
+     
     }
   },
-  Tests: TestsScreen
+  Tests: {
+    screen: TestsScreen,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (<Icon name="ios-play" size={24}/>)
+     
+    }
+  },
+  Lessons: {
+    screen: LessonsScreen,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (<Icon name="ios-school" size={24}/>)
+     
+    }
+
+  }
 },{
   tabBarOptions: {
+    showLabel: false,
     showIcon: true,
+    activeTintColor: 'black',
+    inactiveTintColor: 'gray',
     style: {
-      backgroundColor: "grey"
+      backgroundColor: "#c4dfe6",
+      
+      
     }
   },
   
@@ -39,7 +60,14 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
  navigationOptions:({navigation})=>{
    const {routeName} = navigation.state.routes[navigation.state.index];
    return {
-     headerTitle: routeName
+     headerTitle: routeName,
+     headerStyle:{
+       backgroundColor: "#07575B",
+       
+     },
+     headerTitleStyle: {
+       color: "white"
+     }
    };
  }
  
@@ -49,7 +77,10 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
 const MainNavigator = createStackNavigator({
   Home:  {screen: HomeTabNavigator}
   
-});
+  
+}
+
+);
 
 const AppNavigator = createSwitchNavigator({
   AuthLoading: {screen: AuthLoadingScreen},
@@ -66,6 +97,9 @@ const AppNavigator = createSwitchNavigator({
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
+  
+    
+  
   render() {
     return <AppContainer />;
   }

@@ -6,7 +6,9 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
     }
-
+   static navigationOptions = {
+       header: null
+   }
     render(){
         const name = this.props.navigation.state.params.name;
     return (

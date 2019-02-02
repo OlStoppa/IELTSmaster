@@ -23,7 +23,7 @@ class AuthScreen extends React.Component {
         const data = JSON.stringify(token);
         this._storeData(data);
 
-        this.props.navigation.navigate('Home', {name: this.state.value});
+        this.props.navigation.navigate('Dashboard', {name: this.state.value});
     }
     _storeData = async (data) => {
         try {

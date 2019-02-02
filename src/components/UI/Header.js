@@ -9,7 +9,7 @@ class Header extends React.Component {
     render () {
         return (
             <View style={styles.container}>
-                <MainText>{this.props.children}</MainText>
+                <MainText style={styles.text}>{this.props.children}</MainText>
             </View>
         );
         
@@ -21,9 +21,13 @@ export default Header;
 const styles = StyleSheet.create({
     container: {
         height: "50%",
-        backgroundColor: "blue",
+        backgroundColor: "#07575B",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
         
+        
+    },
+    text: {
+        color: "white"
     }
 });
