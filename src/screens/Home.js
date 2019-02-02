@@ -1,13 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, AsyncStorage } from 'react-native';
+import Header from '../components/UI/Header';
 
-const HomeScreen = (props) => {
-    const name = props.navigation.getParam('name');
+class HomeScreen extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render(){
+        const name = this.props.navigation.state.params.name;
     return (
     <View>
-        <Text>Home Screen{name}</Text>
+        <Header>Hi {name}!</Header>
     </View>
     );
+    }
 };
 
 export default HomeScreen;

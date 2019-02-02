@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultInput from '../components/UI/DefaultInput';
 import MainText from '../components/UI/MainText';
-import { View, StyleSheet, Button, ImageBackground } from 'react-native';
+import { View, StyleSheet, Button, ImageBackground, AsyncStorage } from 'react-native';
 
 class AuthScreen extends React.Component {
     static navigationOptions = {
@@ -21,15 +21,16 @@ class AuthScreen extends React.Component {
             id: 1
             };
         const data = JSON.stringify(token);
-        _storeData = async () => {
-            try {
-                await AsyncStorage.setItem('userToken', data);
-            } catch (error) {
-                console.log('error');
-            }
-        }
+        this._storeData(data);
 
-        this.props.navigation.navigate('Home');
+        this.props.navigation.navigate('Home', {name: this.state.value});
+    }
+    _storeData = async (data) => {
+        try {
+            await AsyncStorage.setItem('userToken', data);
+        } catch (error) {
+            console.log('error');
+        }
     }
 
     render() {
