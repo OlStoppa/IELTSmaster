@@ -56,7 +56,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
     }
   },
   
-  tabBarPosition: "bottom",
+  // tabBarPosition: "bottom",
  navigationOptions:({navigation})=>{
    const {routeName} = navigation.state.routes[navigation.state.index];
    return {

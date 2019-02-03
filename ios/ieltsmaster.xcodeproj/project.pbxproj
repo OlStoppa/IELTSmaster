@@ -55,6 +55,9 @@
 		8E8FE08D15FF4DA6BE7A3379 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9788BD125CCA458E8A359D9E /* Octicons.ttf */; };
 		8BCB172E020B4D1F970F33FD /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E72DB1E867B542B8B630096A /* SimpleLineIcons.ttf */; };
 		316D15BB22AA4F988AC4C193 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B524D97C4DE4C9E966D1DA1 /* Zocial.ttf */; };
+		19393EF0F20F4731BB2E6C73 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 125BF2E3FD7D42F78563D5BF /* libRCTVideo.a */; };
+		8FD61A802184494F9615F58A /* libRNSoundPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2090D21E7EBC412AB7EAE43F /* libRNSoundPlayer.a */; };
+		E8AEFCEA58EA47B4A6833711 /* libRNAudioRecorderPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11806B1B41A64BACB154DF8A /* libRNAudioRecorderPlayer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +383,12 @@
 		9788BD125CCA458E8A359D9E /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E72DB1E867B542B8B630096A /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		6B524D97C4DE4C9E966D1DA1 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FAC65FEEC41F485B882C8FA7 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		125BF2E3FD7D42F78563D5BF /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		ED62B599813E4023ADD249BB /* RNSoundPlayer.xcodeproj */ = {isa = PBXFileReference; name = "RNSoundPlayer.xcodeproj"; path = "../node_modules/react-native-sound-player/ios/RNSoundPlayer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		2090D21E7EBC412AB7EAE43F /* libRNSoundPlayer.a */ = {isa = PBXFileReference; name = "libRNSoundPlayer.a"; path = "libRNSoundPlayer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		17E23894F3D8424395395725 /* RNAudioRecorderPlayer.xcodeproj */ = {isa = PBXFileReference; name = "RNAudioRecorderPlayer.xcodeproj"; path = "../node_modules/react-native-audio-recorder-player/ios/RNAudioRecorderPlayer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		11806B1B41A64BACB154DF8A /* libRNAudioRecorderPlayer.a */ = {isa = PBXFileReference; name = "libRNAudioRecorderPlayer.a"; path = "libRNAudioRecorderPlayer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +418,9 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				CBF4E5441D4A4269B47C8692 /* libRNGestureHandler.a in Frameworks */,
 				42225446FD884C8A907635DC /* libRNVectorIcons.a in Frameworks */,
+				19393EF0F20F4731BB2E6C73 /* libRCTVideo.a in Frameworks */,
+				8FD61A802184494F9615F58A /* libRNSoundPlayer.a in Frameworks */,
+				E8AEFCEA58EA47B4A6833711 /* libRNAudioRecorderPlayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +610,9 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				E603E24C4953491392E03882 /* RNGestureHandler.xcodeproj */,
 				06914C9B287044D18CF38D79 /* RNVectorIcons.xcodeproj */,
+				FAC65FEEC41F485B882C8FA7 /* RCTVideo.xcodeproj */,
+				ED62B599813E4023ADD249BB /* RNSoundPlayer.xcodeproj */,
+				17E23894F3D8424395395725 /* RNAudioRecorderPlayer.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1265,13 +1280,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Debug;
@@ -1294,13 +1310,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Release;
@@ -1325,6 +1342,9 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Debug;
@@ -1348,6 +1368,9 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Release;
@@ -1378,13 +1401,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Debug;
@@ -1415,13 +1439,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Release;
@@ -1451,13 +1476,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Debug;
@@ -1487,13 +1513,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sound-player\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio-recorder-player\ios",
 				);
 			};
 			name = Release;

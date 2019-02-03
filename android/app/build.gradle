@@ -94,6 +94,10 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+    compileOptions {
+             sourceCompatibility 1.8
+             targetCompatibility 1.8
+         }
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
@@ -137,6 +141,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-audio-recorder-player')
+    compile project(':react-native-sound-player')
+    compile project(':react-native-video')
     compile project(':react-native-vector-icons')
     compile project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

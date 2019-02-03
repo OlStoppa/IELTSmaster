@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flexDirection: "row",
         justifyContent: "space-around",
+        flexWrap: "wrap",
         padding: 30
     }
 });

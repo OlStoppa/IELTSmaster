@@ -36,6 +36,44 @@ const test =[{
 
 
 
+},
+{
+    sec1Q:["Is your home town a good place to live?",
+        "What sort of jobs do people do in your home town?",
+        "In which part of your home town do most people live?",
+        "Where did you play in your home town when you were a child?",
+        "How often do you go to the cinema?",
+        "Do you prefer to watch a film in the cinema or at home?",
+        "Which film from your childhood do you remember most?",
+        "What's your favourite film now?"]
+,
+    sec1Audio:["audio/q1.mp3","audio/q2.mp3","audio/q3.mp3","audio/q4.mp3"],
+
+    sec2:['Describe an interesting place that you have visited as a tourist.','where this place is', 'why you went there','what you did there','   and explain why you thought this place was so interesting.']
+,
+    sec3:['What areas of a town or city do people like to visit?','How important is it for local governments to look after popular tourist attractions?','Should people pay to visit attractions such as museums and galleries?','How should tourists behave when they are in a different countries?','What can local people do to help tourists enjoy their visit?','What can tourists learn from visiting new places?']	
+
+
+
+},
+{
+    sec1Q:["Is your home town a good place to live?",
+        "What sort of jobs do people do in your home town?",
+        "In which part of your home town do most people live?",
+        "Where did you play in your home town when you were a child?",
+        "How often do you go to the cinema?",
+        "Do you prefer to watch a film in the cinema or at home?",
+        "Which film from your childhood do you remember most?",
+        "What's your favourite film now?"]
+,
+    sec1Audio:["audio/q1.mp3","audio/q2.mp3","audio/q3.mp3","audio/q4.mp3"],
+
+    sec2:['Describe an interesting place that you have visited as a tourist.','where this place is', 'why you went there','what you did there','   and explain why you thought this place was so interesting.']
+,
+    sec3:['What areas of a town or city do people like to visit?','How important is it for local governments to look after popular tourist attractions?','Should people pay to visit attractions such as museums and galleries?','How should tourists behave when they are in a different countries?','What can local people do to help tourists enjoy their visit?','What can tourists learn from visiting new places?']	
+
+
+
 }];
 
 export default test;
