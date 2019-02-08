@@ -1,72 +1,81 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, AsyncStorage} from 'react-native';
-import SoundPlayer from 'react-native-sound-player';
-import AudioRecorderPlayer from 'react-native-audio-recorder-player';
-
-
-
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 class LessonsScreen extends React.Component {
     constructor(props){
         super(props);
-        this.audioRecorderPlayer = new AudioRecorderPlayer();
+        
     }
     
 
-onStartRecord = async () => {
-  const result = await this.audioRecorderPlayer.startRecorder('sdcard/q1.mp4');
-  this._storeData(result)
-//   this.audioRecorderPlayer.addRecordBackListener((e) => {
-//     this.setState({
-//       recordSecs: e.current_position,
-//       recordTime: this.audioRecorderPlayer.mmssss(Math.floor(e.current_position)),
-//     });
-//     return;
-//   });
-  console.log(result);
-}
 
-onStopRecord = async () => {
-  const result = await this.audioRecorderPlayer.stopRecorder();
-//   this.audioRecorderPlayer.removeRecordBackListener();
-//   this.setState({
-//     recordSecs: 0,
-//   });
-//   console.log(result);
-}
-_storeData = async (data) => {
-    try {
-        await AsyncStorage.setItem('q1', data);
-    } catch (error) {
-        console.log('error');
-    }
-}
-onStartPlay = async (path) => {
-    console.log('onStartPlay');
-    const msg = await this.audioRecorderPlayer.startPlayer(path);
-    console.log(msg);
-}
-    
-
-    
 
     render() {
         
-        const data =  AsyncStorage.getItem('q1'); 
-        const but = data ? <Button title="start" onPress={
-            this.onStartRecord
-           
-         } />: <Button title="play" onPress={(data) => {this.onStartPlay(data)}} />;
+        
         return (
-            <View >
-                <Text>Lessons go here</Text>
-                {but}
-                <Button title="stop" onPress={this.onStopRecord} />
-               
+            <View style={styles.container}>
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.playButton}>
+                <View style={styles.playButton}>
+                    <Icon name="ios-play" size={80} color="green"></Icon>
+
+                </View>
+            </TouchableOpacity>
+            </View>
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.recordButton}>
+                <View style={styles.recordButton}>
+                    <Icon name="md-microphone" size={80} color="red"></Icon>
+
+                </View>
+            </TouchableOpacity>
+            </View>
             </View>
         );
     }
 }
 
 export default LessonsScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+        backgroundColor: "#222"
+    },
+
+    playButton: {
+        height: 100,
+        width:100,
+        borderRadius: 50,
+        backgroundColor: "#aaa",
+        color: "white",
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 6,
+        borderColor: "green"
+
+    },
+    recordButton: {
+        height: 100,
+        width:100,
+        borderRadius: 50,
+        backgroundColor: "#aaa",
+        color: "white",
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 6,
+        borderColor: "red"
+    },
+    buttonContainer: {
+        flex: 2,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+        backgroundColor: "#033330"
+    }
+});

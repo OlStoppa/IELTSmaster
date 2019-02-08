@@ -6,7 +6,7 @@ import TestButton from '../components/UI/TestButton';
 class TestsScreen extends React.Component {
     render() {
 
-        const buttons = testData.map((test, index) => <TestButton>{index}</TestButton>)
+        const buttons = testData.map((test, index) => <TestButton key={index}>{index}</TestButton>)
         return (
             <View style={styles.container}>
                 {buttons}
