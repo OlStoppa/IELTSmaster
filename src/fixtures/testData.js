@@ -8,7 +8,7 @@ const test =[{
         "Should buildings be attractive to look at?",
         "What is the most unusual building you have ever seen?"]
 ,
-    sec1Audio:["audio/test1_sec1_q1.mp3","audio/test1_sec1_q2.mp3","audio/test1_sec1_q3.mp3","audio/test1_sec1_q4.mp3","audio/test1_sec1_q5.mp3","audio/test1_sec1_q6.mp3","audio/test1_sec1_q7.mp3","audio/test1_sec1_q8.mp3"],
+    sec1Audio:["test1_sec1_q1.mp3","test1_sec1_q2.mp3","test1_sec1_q3.mp3","test1_sec1_q4.mp3","test1_sec1_q5.mp3","test1_sec1_q6.mp3","test1_sec1_q7.mp3","test1_sec1_q8.mp3"],
 
     sec2:['Describe an interesting story that you heard or read about in the news.','when you read about the story', 'what the story was about','why the story was in the news','   and explain why you thought the story was interesting.']
 ,

@@ -18,7 +18,8 @@ class AuthScreen extends React.Component {
     handleSubmit = () => {
         const token = {
             name: this.state.value,
-            id: 1
+            id: 1,
+            answers: Array(8).fill(undefined)
             };
         const data = JSON.stringify(token);
         this._storeData(data);
@@ -75,8 +76,5 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         opacity: .9
-        
-
-
     }
 });

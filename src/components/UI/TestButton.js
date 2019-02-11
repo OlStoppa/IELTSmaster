@@ -3,7 +3,7 @@ import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
 
 const TestButton = (props) => {
     return (
-        <TouchableOpacity style={styles.touchable}>
+        <TouchableOpacity style={styles.touchable} onPress={props.onSelectTest}>
             <View style={styles.testButton}><Text>{props.children}</Text></View>
         </TouchableOpacity>
     );
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#66a5ad",
+        margin: 20
         
         
         

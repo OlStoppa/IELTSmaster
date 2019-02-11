@@ -4,9 +4,18 @@ import testData from '../fixtures/testData';
 import TestButton from '../components/UI/TestButton';
 
 class TestsScreen extends React.Component {
+    constructor(props){
+        super(props);
+    }
     render() {
 
-        const buttons = testData.map((test, index) => <TestButton key={index}>{index}</TestButton>)
+        const buttons = testData.map((test, index) => 
+            <TestButton 
+                key={index}
+                onSelectTest={() => this.props.navigation.navigate('Test')}
+                
+                
+                >{index}</TestButton>)
         return (
             <View style={styles.container}>
                 {buttons}

@@ -10,15 +10,18 @@ import React, {Component} from 'react';
 import { createStackNavigator, 
   createAppContainer, 
   createSwitchNavigator, 
-  createBottomTabNavigator, 
   createMaterialTopTabNavigator
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 import AuthScreen from './src/screens/Auth';
 import HomeScreen from './src/screens/Home';
 import LessonsScreen from './src/screens/Lessons';
 import AuthLoadingScreen from './src/screens/AuthLoading';
 import TestsScreen from './src/screens/Tests';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Swiper from './src/components/UI/Swiper';
+
+
+
 
 const HomeTabNavigator = createMaterialTopTabNavigator({
   Dashboard: {
@@ -75,12 +78,12 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
 });
 
 const MainNavigator = createStackNavigator({
-  Home:  {screen: HomeTabNavigator}
-  
-  
-}
+  Home:  {screen: HomeTabNavigator},
+  Test: {screen: Swiper}
+   
+});
 
-);
+
 
 const AppNavigator = createSwitchNavigator({
   AuthLoading: {screen: AuthLoadingScreen},

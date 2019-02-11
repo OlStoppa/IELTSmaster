@@ -12,9 +12,12 @@
     "react-native-audio-recorder-player": "^2.1.2",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-sound": "^0.10.12",
+    "react-native-swiper-flatlist": "^1.0.9",
     "react-native-vector-icons": "^6.2.0",
     "react-native-video": "^4.3.1",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-jest": "24.0.0",
