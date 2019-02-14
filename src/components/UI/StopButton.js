@@ -4,14 +4,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const StopButton = (props) => (
-    <View style={styles.buttonContainer}>
+    // <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.recordButton} onPress={props.onStopRecord}>
             <View style={styles.recordButton}>
                 <Icon name="md-square" size={80} color="red"></Icon>
 
             </View>
         </TouchableOpacity>
-    </View>
+    // </View>
 );
 
 export default StopButton;

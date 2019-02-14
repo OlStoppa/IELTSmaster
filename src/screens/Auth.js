@@ -19,7 +19,7 @@ class AuthScreen extends React.Component {
         const token = {
             name: this.state.value,
             id: 1,
-            answers: Array(8).fill(undefined)
+            answers: []
             };
         const data = JSON.stringify(token);
         this._storeData(data);

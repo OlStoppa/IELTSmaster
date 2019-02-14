@@ -4,14 +4,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const PlayButton = (props) => (
-    <View style={styles.buttonContainer}>
+    // <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.playButton} onPress={props.onQuestionPlay}>
             <View style={styles.playButton}>
                 <Icon name="ios-play" size={80} color="green"></Icon>
 
             </View>
          </TouchableOpacity>
-    </View>
+    // </View>
 );
 
 export default PlayButton;
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         flex: 2,
         alignItems: "center",
         justifyContent: "center",
-        padding: 20,
         backgroundColor: "#c4dfe6"
     }
 });

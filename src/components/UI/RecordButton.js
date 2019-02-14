@@ -4,14 +4,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const RecordButton = (props) => (
-    <View style={styles.buttonContainer}>
+    // <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.recordButton} onPress={props.onRecord}>
             <View style={styles.recordButton}>
                 <Icon name="md-microphone" size={80} color="red"></Icon>
 
             </View>
         </TouchableOpacity>
-    </View>
+    // </View>
 );
 
 export default RecordButton;
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         flex: 2,
         alignItems: "center",
         justifyContent: "center",
-        padding: 20,
         backgroundColor: "#c4dfe6"
     }
 }); 

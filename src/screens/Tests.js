@@ -1,7 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import { connect } from 'react-redux';
 import testData from '../fixtures/testData';
 import TestButton from '../components/UI/TestButton';
+
 
 class TestsScreen extends React.Component {
     constructor(props){
@@ -13,9 +15,9 @@ class TestsScreen extends React.Component {
             <TestButton 
                 key={index}
                 onSelectTest={() => this.props.navigation.navigate('Test')}
+                answers={this.props.answers.length}
                 
-                
-                >{index}</TestButton>)
+                >Test {index + 1}</TestButton>)
         return (
             <View style={styles.container}>
                 {buttons}
@@ -24,12 +26,19 @@ class TestsScreen extends React.Component {
     }
 }
 
-export default TestsScreen;
+
+const mapStateToProps = state => {
+    return {
+        answers: state.answers.answers
+      };
+};
+
+export default connect(mapStateToProps)(TestsScreen);
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#d3d3d3",
         flexDirection: "row",
         justifyContent: "space-around",
         flexWrap: "wrap",
