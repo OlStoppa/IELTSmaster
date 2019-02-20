@@ -48,9 +48,9 @@ export default connect(mapStateToProps)(TestsScreen);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#d3d3d3",
+        backgroundColor: "#e0e0e0",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-evenly",
         flexWrap: "wrap",
         padding: 30
     }

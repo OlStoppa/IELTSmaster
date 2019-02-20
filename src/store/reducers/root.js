@@ -4,7 +4,7 @@ const initialState = {
     answers: {
         part1: new Array(4).fill(new Array(8).fill(0)),
         part2: new Array(4).fill(new Array(1).fill(0)),
-        part3: new Array(4).fill(new Array(6).fill(0))
+        part3: new Array(4).fill(new Array(3).fill(0))
     }
 };
 

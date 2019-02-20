@@ -22,6 +22,7 @@ import Swiper from './src/components/UI/Swiper';
 import PartTwoReady from './src/screens/SectionTwoReady';
 import PartTwo from './src/screens/PartTwo';
 import TestParts from './src/screens/TestParts';
+import Examples from './src/screens/Examples';
 
 
 
@@ -48,6 +49,12 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
      
     }
 
+  },
+  Examples: {
+    screen: Examples,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (<Icon name="md-book" size={24}/>)
+    }
   }
 },{
   tabBarOptions: {

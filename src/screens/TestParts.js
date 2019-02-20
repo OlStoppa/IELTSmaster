@@ -100,7 +100,9 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         justifyContent: "space-evenly",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#f5f5f5",
+        flex: 1
     },
     button: {
         height: 100,

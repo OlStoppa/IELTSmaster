@@ -5,8 +5,8 @@ import SwiperFlatList from 'react-native-swiper-flatlist';
 import QuestionScreen from '../../screens/QuestionScreen';
 import testData from '../../fixtures/testData';
 import { addAnswer, deleteAnswer } from '../../store/actions/answers';
-import { storage } from '../../firebase';
-import RNFetchBlob from 'rn-fetch-blob';
+// import { storage } from '../../firebase';
+// import RNFetchBlob from 'rn-fetch-blob';
 
 
 class Swiper extends React.Component {
@@ -15,6 +15,8 @@ class Swiper extends React.Component {
     
 
   }
+
+  
 
 
   handleAddAnswer = (path, testNumber, index, part) => {
@@ -48,21 +50,17 @@ class Swiper extends React.Component {
   render() {
     const testNumber = this.props.navigation.state.params.test;
     const part = this.props.navigation.state.params.part;
-    const testPartPath = `sec${part}Q`;
+    const testPartPath = `sec${part}`;
     const statePath = `part${part}`;
+    const questionPath = `sec${part}Audio`;
     const content = testData[testNumber][testPartPath].map((question, index) => {
-      const audioPath = testData[testNumber].sec1Audio[index];
+      const audioPath = testData[testNumber][questionPath][index];
       const answerPath = this.props.answers[statePath][testNumber][index];
       console.log(statePath)
       return (
         
         <View key={index} style={[styles.child]}>
-          {index === testData[testNumber].sec1Q.length - 1 &&
-          <Button
-            title="Go to Part 2"
-            onPress = {()=>{this.props.navigation.navigate('PartTwoReady', {testNumber: testNumber})} }
-          />
-          }
+          
           <QuestionScreen
             index={index}
             audio={audioPath}
@@ -72,12 +70,22 @@ class Swiper extends React.Component {
             testNumber={testNumber}
             part={statePath}
           />
+          {!!answerPath &&
+          <View style={styles.progressButton}>
+          <Button
+            
+            title="Continue"
+            onPress = {()=>{this.refs.swiper._scrollToIndex(index + 1)} }
+          />
+          </View>
+          }
         </View>
       );
     })
     return (
       <View style={styles.container}>
         <SwiperFlatList
+          ref="swiper"
           showPagination
           index={0}
         >
@@ -115,6 +123,13 @@ const styles = StyleSheet.create({
     height,
     width,
     justifyContent: 'center'
+  }, 
+  progressButton: {
+    
+    position: "absolute",
+    zIndex: 5,
+    bottom: "50%",
+    alignSelf: "flex-end"
   }
 });
 

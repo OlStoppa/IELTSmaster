@@ -18,8 +18,8 @@ export default RecordButton;
 
 const styles = StyleSheet.create({
     recordButton: {
-        height: 150,
-        width:150,
+        height: 100,
+        width:100,
         borderRadius: 50,
         backgroundColor: "#eee",
         color: "white",
