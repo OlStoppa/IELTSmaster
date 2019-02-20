@@ -4,6 +4,7 @@ import MainText from '../components/UI/MainText';
 import Header from '../components/UI/Header';
 
 const SectionTwoReady = (props) => {
+    const testNumber = props.navigation.state.params.testNumber;
     return (
         <View>
         <View style={{width: "100%", alignSelf: "flex-start"}}>
@@ -13,7 +14,7 @@ const SectionTwoReady = (props) => {
             
             <MainText>You will have 60 seconds to plan your answer to the question card. You may make notes.</MainText>
             
-            <Button title="Ready" onPress={() => {props.navigation.navigate('PartTwo')}}/>
+            <Button title="Ready" onPress={() => {props.navigation.navigate('PartTwo', {testNumber})}}/>
         </View>
         </View>
     );

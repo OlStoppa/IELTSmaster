@@ -21,6 +21,7 @@ import TestsScreen from './src/screens/Tests';
 import Swiper from './src/components/UI/Swiper';
 import PartTwoReady from './src/screens/SectionTwoReady';
 import PartTwo from './src/screens/PartTwo';
+import TestParts from './src/screens/TestParts';
 
 
 
@@ -83,7 +84,8 @@ const MainNavigator = createStackNavigator({
   Home:  {screen: HomeTabNavigator},
   Test: {screen: Swiper},
   PartTwoReady: {screen: PartTwoReady},
-  PartTwo: {screen: PartTwo}
+  PartTwo: {screen: PartTwo},
+  TestParts: {screen: TestParts}
    
 });
 

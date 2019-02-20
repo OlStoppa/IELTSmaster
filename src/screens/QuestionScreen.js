@@ -29,6 +29,8 @@ class QuestionScreen extends React.Component {
             onAddAnswer={this.props.onAddAnswer}
             onDeleteAnswer={this.props.onDeleteAnswer}
             answerPath={this.props.answerPath}
+            testNumber={this.props.testNumber}
+            part={this.props.part}
           />
         </View>
       </View>

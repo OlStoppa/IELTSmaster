@@ -41,7 +41,7 @@ class AnswerButton extends React.Component {
         //     recordSecs: 0,
         //   });
         this.setState({ recording: false });
-        this.props.onAddAnswer(this.state.recordingPath, this.props.index)
+        this.props.onAddAnswer(this.state.recordingPath, this.props.testNumber, this.props.index, this.props.part);
         console.log(result);
     }
 
@@ -65,16 +65,17 @@ class AnswerButton extends React.Component {
         });
     }
     render() {
+        const {index, answerPath, testNumber, part} = this.props;
 
         if (this.props.answerPath) {
             return (
                 <View style={{ alignItems: "center" }}>
                     <Text style={styles.answerText}>Play your answer or delete to try again</Text>
                     <DeleteButton
-                        onDeleteAnswer={() => { this.props.onDeleteAnswer(this.props.index) }}
+                        onDeleteAnswer={() => { this.props.onDeleteAnswer(index, testNumber, part) }}
                     />
                     <PlayButton
-                        onQuestionPlay={() => this.onStartPlay(this.props.answerPath)}
+                        onQuestionPlay={() => this.onStartPlay(answerPath)}
                     />
 
                 </View>
