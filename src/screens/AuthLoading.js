@@ -23,7 +23,7 @@ class AuthLoadingScreen extends React.Component {
     if (data !== null) {
       const userToken = JSON.parse(data);
       this.props.navigation.navigate('Dashboard',{name: userToken.name});
-      this.props.onSetInit(userToken.answers);
+      this.props.onSetInit(userToken.answers, userToken.name, userToken.id);
     }
     else {
       this.props.navigation.navigate( 'Login');
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    onSetInit: (answers) => dispatch(setInit(answers))
+    onSetInit: (answers, name, id) => dispatch(setInit(answers, name, id))
   };
 };
 

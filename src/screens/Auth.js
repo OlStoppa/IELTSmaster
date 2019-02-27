@@ -2,6 +2,8 @@ import React from 'react';
 import DefaultInput from '../components/UI/DefaultInput';
 import MainText from '../components/UI/MainText';
 import { View, StyleSheet, Button, ImageBackground, AsyncStorage } from 'react-native';
+import { connect } from 'react-redux';
+import { setInit } from '../store/actions/answers';
 
 class AuthScreen extends React.Component {
     static navigationOptions = {
@@ -25,6 +27,7 @@ class AuthScreen extends React.Component {
                 part3: new Array(4).fill(new Array(3).fill(0))
             }
             };
+        this.props.onSetInit(token.answers, token.name, token.id);
         const data = JSON.stringify(token);
         this._storeData(data);
 
@@ -36,6 +39,7 @@ class AuthScreen extends React.Component {
         } catch (error) {
             console.log('error');
         }
+        
     }
 
     render() {
@@ -61,8 +65,13 @@ class AuthScreen extends React.Component {
         );
     }
 }
+const mapDispatchToProps = dispatch => {
+    return {
+      onSetInit: (answers, name, id) => dispatch(setInit(answers, name, id))
+    };
+  };
 
-export default AuthScreen;
+export default connect(null, mapDispatchToProps)(AuthScreen);
 
 const styles = StyleSheet.create({
     container: {

@@ -1,15 +1,25 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { connect } from 'react-redux';
 
 class TestParts extends React.Component {
+    static navigationOptions = ({ navigation }) => ({
+        title: `${navigation.state.params.title}`,
+        
+            headerStyle:{
+                backgroundColor:'#07575B'
+            },
+            headerTitleStyle: {
+                color: "white"
+            }
+        });
     render() {
         const { part1, part2, part3 } = this.props.answers;
         const testNumber = this.props.navigation.state.params.test;
         const partOnePercentComplete = 100 / 8 * part1[testNumber].filter(answer => answer !== 0).length;
         const partTwoPercentComplete = part2[testNumber][0] ? 100 : 0;
-        const partThreePercentComplete = 100 / 6 * part3[testNumber].filter(answer => answer !== 0).length;
+        const partThreePercentComplete = 100 / 3 * part3[testNumber].filter(answer => answer !== 0).length;
         return (
             <View style={styles.container}>
                 <View style={{padding: 20}}>
@@ -43,7 +53,7 @@ class TestParts extends React.Component {
                     {
                         (fill) => (
                         <TouchableOpacity onPress={
-                            partTwoPercentComplete === 0 ? () => this.props.navigation.navigate('PartTwoReady', {testNumber: testNumber})
+                            partTwoPercentComplete === 0 ? () => this.props.navigation.navigate('PartTwoReady', {testNumber: testNumber, part:2 })
                             :
                             () => this.props.navigation.navigate('PartTwo', { testNumber })
 
@@ -80,7 +90,7 @@ class TestParts extends React.Component {
                 </View>
                 {
                     partOnePercentComplete + partTwoPercentComplete + partThreePercentComplete === 300 &&
-                    <Button>Get My Band Score</Button>
+                    <Button title="Get My Band Score"/>
                 }
             </View>
         );
@@ -101,7 +111,7 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "space-evenly",
         alignItems: "center",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#e0e0e0",
         flex: 1
     },
     button: {

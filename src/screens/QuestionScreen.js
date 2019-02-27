@@ -19,9 +19,11 @@ class QuestionScreen extends React.Component {
         <View style={styles.questionView}>
           <MainText>Question {this.props.index + 1}</MainText>
           <Text>Listen to the question</Text>
+          <View style={{ paddingTop: 50}}>
           <PlayButton
             onQuestionPlay={() => { sound.play() }}
           />
+          </View>
         </View>
         <View style={styles.answerView}>
           <AnswerButton

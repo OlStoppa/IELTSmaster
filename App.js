@@ -6,12 +6,14 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React from 'react';
 import { createStackNavigator, 
   createAppContainer, 
   createSwitchNavigator, 
   createMaterialTopTabNavigator
 } from 'react-navigation';
+import { connect } from 'react-redux';
+import { AsyncStorage } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import AuthScreen from './src/screens/Auth';
 import HomeScreen from './src/screens/Home';
@@ -88,11 +90,19 @@ const HomeTabNavigator = createMaterialTopTabNavigator({
 });
 
 const MainNavigator = createStackNavigator({
-  Home:  {screen: HomeTabNavigator},
-  Test: {screen: Swiper},
+  Home:  {
+    screen: HomeTabNavigator,
+   
+  },
+  Test: {
+    screen: Swiper,
+    
+  },
   PartTwoReady: {screen: PartTwoReady},
   PartTwo: {screen: PartTwo},
-  TestParts: {screen: TestParts}
+  TestParts: {
+    screen: TestParts
+  }
    
 });
 
@@ -112,12 +122,39 @@ const AppNavigator = createSwitchNavigator({
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component {
+class App extends React.Component {
+
+  _storeData = async (data) => {
+    try {
+        await AsyncStorage.setItem('userToken', data);
+    } catch (error) {
+        console.log('error');
+    }
+}
   
-    
+ componentWillUnmount() {
+   
+  const token = {
+    id: this.props.id,
+    name: this.props.name,
+    answers: this.props.answers
+  }
+  const data = JSON.stringify(token);
+  this._storeData(data);
+ }
   
   render() {
     return <AppContainer />;
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    answers: state.answers.answers,
+    name: state.answers.name,
+    id: state.answers.id
+  };
+};
+
+export default connect(mapStateToProps)(App);
 

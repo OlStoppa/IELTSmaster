@@ -1,9 +1,11 @@
 import { ADD_ANSWER, DELETE_ANSWER, SET_INIT} from './actionTypes';
 
-export const setInit = (answers) => {
+export const setInit = (answers, name, id) => {
     return {
         type: SET_INIT,
-        answers
+        answers,
+        name,
+        id
     }
 };
 
