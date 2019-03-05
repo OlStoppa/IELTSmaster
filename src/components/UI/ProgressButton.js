@@ -3,18 +3,18 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 
 const ProgressButton = (props) => {
-    
-    if(props.disabled){
-        return(
-            <View style={[styles.progressButton, props.disabled ? styles.disabled: null]}>
-            <Text style={styles.buttonText}>{props.text}</Text>
-        </View>
+
+    if (props.disabled) {
+        return (
+            <View style={[styles.progressButton, props.disabled ? styles.disabled : null]}>
+                <Text style={styles.buttonText}>{props.text}</Text>
+            </View>
         );
     }
     else {
-        return(
+        return (
             <TouchableOpacity onPress={props.onPress}>
-                <View style={[styles.progressButton, props.disabled ? styles.disabled: null]}>
+                <View style={[styles.progressButton, props.disabled ? styles.disabled : null]}>
                     <Text style={styles.buttonText}>{props.text}</Text>
                 </View>
             </TouchableOpacity>
@@ -23,7 +23,7 @@ const ProgressButton = (props) => {
     }
 
 
- 
+
 };
 
 

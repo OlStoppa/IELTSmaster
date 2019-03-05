@@ -133,7 +133,7 @@ class App extends React.Component {
 }
   
  componentWillUnmount() {
-   
+   if(this.props.name) {
   const token = {
     id: this.props.id,
     name: this.props.name,
@@ -142,6 +142,7 @@ class App extends React.Component {
   const data = JSON.stringify(token);
   this._storeData(data);
  }
+}
   
   render() {
     return <AppContainer />;

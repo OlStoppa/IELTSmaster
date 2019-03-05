@@ -2,8 +2,13 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { connect } from 'react-redux';
+import SubmitTest from '../components/components/SubmitTest';
 
 class TestParts extends React.Component {
+    state={
+        modal: false
+    };
+
     static navigationOptions = ({ navigation }) => ({
         title: `${navigation.state.params.title}`,
         
@@ -14,6 +19,14 @@ class TestParts extends React.Component {
                 color: "white"
             }
         });
+
+        modalHandler = () => {
+            this.setState((prevState) => {
+                return {
+                    modal: !prevState.modal
+                }
+            })
+        }
     render() {
         const { part1, part2, part3 } = this.props.answers;
         const testNumber = this.props.navigation.state.params.test;
@@ -34,7 +47,8 @@ class TestParts extends React.Component {
                         (fill) => (
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Test', { test: testNumber, part: 1 })}>
                             <View style={styles.button}>
-                                <Text>Part 1</Text>
+                                <View style={styles.buttonInner}><Text>Part</Text></View>
+                                <View style={[styles.buttonInner]}><Text style={{fontSize: 40}}>1</Text></View>
 
                             </View>
                         </TouchableOpacity>
@@ -55,12 +69,13 @@ class TestParts extends React.Component {
                         <TouchableOpacity onPress={
                             partTwoPercentComplete === 0 ? () => this.props.navigation.navigate('PartTwoReady', {testNumber: testNumber, part:2 })
                             :
-                            () => this.props.navigation.navigate('PartTwo', { testNumber })
+                            () => this.props.navigation.navigate('PartTwo', { testNumber, part: 2})
 
 
                         }>
                             <View style={styles.button}>
-                                <Text>Part 2</Text>
+                            <View style={styles.buttonInner}><Text>Part</Text></View>
+                                <View style={[styles.buttonInner]}><Text style={{fontSize: 40}}>2</Text></View>
 
                             </View>
                         </TouchableOpacity>
@@ -80,7 +95,8 @@ class TestParts extends React.Component {
                         (fill) => (
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Test', { test: testNumber, part: 3 })}>
                             <View style={styles.button}>
-                                <Text>Part 3</Text>
+                            <View style={styles.buttonInner}><Text>Part</Text></View>
+                                <View style={[styles.buttonInner]}><Text style={{fontSize: 40}}>3</Text></View>
 
                             </View>
                         </TouchableOpacity>
@@ -90,8 +106,17 @@ class TestParts extends React.Component {
                 </View>
                 {
                     partOnePercentComplete + partTwoPercentComplete + partThreePercentComplete === 300 &&
-                    <Button title="Get My Band Score"/>
+                    <Button 
+                    title="Get My Band Score"
+                    onPress={this.modalHandler}/>
                 }
+                <SubmitTest
+                    visible={this.state.modal}
+                    testNumber={testNumber}
+                    name={this.props.name}
+                    id={this.props.id}
+                    answers={this.props.answers}     
+                />
             </View>
         );
     }
@@ -121,8 +146,14 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flexDirection: "row"
 
+    },
+    buttonInner: {
+        width: "50%",
+        justifyContent: "center",
+        alignItems: "center"
     }
 
 });

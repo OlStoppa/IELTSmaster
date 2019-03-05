@@ -36,7 +36,7 @@ export default Countdown;
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 30,
+        fontSize: 50,
         color: "white"
     }
 });

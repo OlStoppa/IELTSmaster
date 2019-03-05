@@ -1,18 +1,35 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-const PlayButton = (props) => (
-    // <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.playButton} onPress={props.onQuestionPlay}>
-            <View style={styles.playButton}>
-                <Icon name="ios-play" size={80} color="green"></Icon>
+class PlayButton extends React.Component{
+    state = {
+        addAnim: new Animated.Value(0)
+    };
 
-            </View>
-         </TouchableOpacity>
-    // </View>
-);
+    componentDidMount () {
+        Animated.spring(this.state.addAnim, {
+            toValue: 1,
+            duration: 500,
+            useNativeDriver: true
+        }).start();
+    }
+    render () {
+        return (
+            // <View style={styles.buttonContainer}>
+            <Animated.View style={{ transform: [{scale: this.state.addAnim}]}}>
+                <TouchableOpacity style={styles.playButton} onPress={this.props.onQuestionPlay}>
+                    <View style={styles.playButton}>
+                        <Icon name="ios-play" size={80} color="green"></Icon>
+        
+                    </View>
+                 </TouchableOpacity>
+            </Animated.View>
+            // </View>
+        );
+    }
+} 
 
 export default PlayButton;
 

@@ -6,6 +6,7 @@ import AnswerButton from '../components/UI/AnswerButton';
 import testData from '../fixtures/testData';
 import Countdown from '../components/components/Countdown';
 import { addAnswer, deleteAnswer } from '../store/actions/answers';
+import ProgressButton from '../components/UI/ProgressButton';
 
 
 class PartTwo extends React.Component {
@@ -52,10 +53,11 @@ class PartTwo extends React.Component {
         const testNumber = this.props.navigation.state.params.testNumber;
         const answerPath = this.props.answers.part2[testNumber][0];
         return (
-            <View>
-                <View style={{ padding: 3, backgroundColor: "#d3d3d3", height: "50%" }}>
+            <View >
+                <View style={{ padding: 3, height: "50%", backgroundColor: "#d3d3d3" }}>
                     <View style={styles.card}>
-                        <Text style={{ fontSize: 28 }}>{testData[testNumber].sec2[0]}</Text>
+                        <Text style={{ fontSize: 25 }}>{testData[testNumber].sec2[0]}</Text>
+                        <Text>You should say:</Text>
                         <Text style={styles.mediumText}>{testData[testNumber].sec2[1]}</Text>
                         <Text style={styles.mediumText}>{testData[testNumber].sec2[2]}</Text>
                         <Text style={styles.mediumText}>{testData[testNumber].sec2[3]}</Text>
@@ -81,6 +83,15 @@ class PartTwo extends React.Component {
                     }
 
                 </View>
+                {
+                    answerPath !== 0 && 
+                    <View style={styles.progressButton}>
+                    <ProgressButton
+                        text="Continue"
+                        onPress={() => {this.props.navigation.navigate('TestParts', {test: testNumber, title: `Test ${testNumber + 1}`})}}
+                        />
+                    </View>
+                }
             </View>
         );
     }
@@ -114,7 +125,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "black",
         padding: 20,
-        fontSize: 20
+        fontSize: 20,
+        backgroundColor: "#f9f9f9"
         
         
     },
@@ -126,6 +138,16 @@ const styles = StyleSheet.create({
         backgroundColor: "black"
     },
     mediumText: {
-        fontSize: 22
-    }
+        fontSize: 20,
+        marginBottom: 5,
+        paddingLeft: 8
+
+    },
+    progressButton: {
+    
+        position: "absolute",
+        zIndex: 5,
+        bottom: "55%",
+        alignSelf: "flex-end"
+      }
 });

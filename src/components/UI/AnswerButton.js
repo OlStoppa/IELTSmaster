@@ -10,6 +10,7 @@ import Permissions from 'react-native-permissions';
 class AnswerButton extends React.Component {
     constructor(props) {
         super(props);
+        this._isMounted = false;
         this.audioRecorderPlayer = new AudioRecorderPlayer();
     }
 
@@ -20,12 +21,11 @@ class AnswerButton extends React.Component {
     }
 
     onStartRecord = async () => {
-        const result = await this.audioRecorderPlayer.startRecorder(`sdcard/question${this.props.index}.mp4`);
+        const result = await this.audioRecorderPlayer.startRecorder(`sdcard/test${this.props.testNumber}_${this.props.part}_question${this.props.index}.mp4`);
         this.setState({
             recording: true,
             recordingPath: result
         });
-        //   this._storeData(result)
         this.audioRecorderPlayer.addRecordBackListener((e) => {
             // this.setState({
             //   recordSecs: e.current_position,
@@ -42,7 +42,7 @@ class AnswerButton extends React.Component {
         //   this.setState({
         //     recordSecs: 0,
         //   });
-        this.setState({ recording: false });
+        this._isMounted === true && this.setState({ recording: false });
         this.props.onAddAnswer(this.state.recordingPath, this.props.testNumber, this.props.index, this.props.part);
         console.log(result);
     }
@@ -51,13 +51,13 @@ class AnswerButton extends React.Component {
         console.log('onStartPlay');
         const playerPath = path.substring(6);
         const msg = await this.audioRecorderPlayer.startPlayer(playerPath);
-        this.setState({ playing: true });
+        this._isMounted && this.setState({ playing: true });
         console.log(msg);
         this.audioRecorderPlayer.addPlayBackListener((e) => {
             if (e.current_position === e.duration) {
                 console.log('finished');
                 this.audioRecorderPlayer.stopPlayer().catch(() => { });
-                this.setState({ playing: false})
+                this._isMounted === true && this.setState({ playing: false })
             }
             //   this.setState({
             //     currentPositionSec: e.current_position,
@@ -71,27 +71,38 @@ class AnswerButton extends React.Component {
 
     permissionCheck = async () => {
         const micPermission = await Permissions.check('microphone');
-  console.log('micPermission', micPermission);
-  if (micPermission !== 'authorized') {
-    const micRequest = await Permissions.request('microphone');
-    console.log('micRequest', micRequest);
-    if (micRequest !== 'authorized') {
-      return;
-    }
-  }
-  const storagePermission = await Permissions.check('storage');
-  if (storagePermission !== 'authorized') {
-    const storageRequest = await Permissions.request('storage');
-    if (storageRequest !== 'authorized') {
-      return;
-    }
-  }
+        console.log('micPermission', micPermission);
+        if (micPermission !== 'authorized') {
+            const micRequest = await Permissions.request('microphone');
+            console.log('micRequest', micRequest);
+            if (micRequest !== 'authorized') {
+                return;
+            }
+        }
+        const storagePermission = await Permissions.check('storage');
+        if (storagePermission !== 'authorized') {
+            const storageRequest = await Permissions.request('storage');
+            if (storageRequest !== 'authorized') {
+                return;
+            }
+        }
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.permissionCheck();
-}
-    
+    }
+
+    componentWillUnmount() {
+        this.isMounted = false;
+        if( this.state.playing === true) {
+            this.audioRecorderPlayer.stopPlayer().catch(() => { });
+        }
+        if(this.state.recording === true) {
+            this.audioRecorderPlayer.stopRecorder();
+        }
+    }
+
 
 
     render() {
@@ -107,6 +118,7 @@ class AnswerButton extends React.Component {
                                 <StopButton
                                     onStopRecord={() => {
                                         this.audioRecorderPlayer.stopPlayer().catch(() => { });
+                                        this._isMounted === true &&
                                         this.setState({ playing: false });
                                     }} />
                                 :
@@ -150,6 +162,7 @@ const styles = StyleSheet.create({
     answerText: {
         color: "white",
         paddingBottom: 50
+       
     },
     playView: {
         display: "flex",

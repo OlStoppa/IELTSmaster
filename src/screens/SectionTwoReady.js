@@ -19,7 +19,8 @@ class SectionTwoReady extends React.Component {
                 </View>
                 <View style={styles.container}>
 
-                    <MainText>You will have 60 seconds to plan your answer to the question card. You may make notes.</MainText>
+                    <MainText style={{textAlign: "center", fontSize: 20}}>You will have 60 seconds to plan your answer to the question card.</MainText>
+                    <MainText style={{textAlign: "center", fontSize: 20, marginBottom: 20}}>You may make notes.</MainText>
 
                     <Button title="Ready" onPress={() => { this.props.navigation.navigate('PartTwo', { testNumber, part: 2 }) }} />
                 </View>
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-start"
+        justifyContent: "center",
+        padding: 20
     }
 });

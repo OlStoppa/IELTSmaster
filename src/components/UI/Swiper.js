@@ -8,8 +8,7 @@ import testData from '../../fixtures/testData';
 import { addAnswer, deleteAnswer } from '../../store/actions/answers';
 import ProgressButton from '../UI/ProgressButton';
 import SubmitTest from '../components/SubmitTest';
-// import { storage } from '../../firebase';
-// import RNFetchBlob from 'rn-fetch-blob';
+
 
 
 class Swiper extends React.Component {
@@ -44,22 +43,7 @@ class Swiper extends React.Component {
   handleAddAnswer = (path, testNumber, index, part) => {
     console.log(part)
     this.props.onAddAnswer(path, testNumber, index, part);
-    // const ref = storage.ref('test/answer.mp4');
-    // const Blob = RNFetchBlob.polyfill.Blob;
-    // const fs = RNFetchBlob.fs;
-    // window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-    // window.Blob = Blob;
-    // const audioFile = RNFetchBlob.wrap(path);
-    // console.log(audioFile);
-    // let uploadBlob = null;
-    // Blob.build(audioFile, { type: 'media/mp4;'})
-    //   .then((audioBlob) => {
-    //     uploadBlob = audioBlob;
-    //     return ref.put(audioBlob, {contentType: 'media/mp4'} );
-    //   })
-    //   .then(() => {
-    //     uploadBlob.close()
-    //   })
+   
 
     
   }
@@ -78,10 +62,10 @@ class Swiper extends React.Component {
       return <View style={styles.progressButton}>
       <ProgressButton
         
-        text="Submit"
+        text="Get My Score"
         onPress = {this.modalHandler}
       />
-      </View>;;
+      </View>;
     } else {
       return   !!answerPath &&
       <View style={styles.progressButton}>
@@ -102,11 +86,28 @@ class Swiper extends React.Component {
       </View>;
     }
   }
+  _storeData = async (data) => {
+    try {
+        await AsyncStorage.setItem('userToken', data);
+        console.log('storing');
+    } catch (error) {
+        console.log(error);
+    }
+}
 
   componentDidMount(){
     Orientation.lockToPortrait();
   }
-
+  componentWillUnmount() {
+    Orientation.unlockAllOrientations();
+    const {name, id, answers} = this.props;
+    const data = {
+      name,
+      id,
+      answers
+    };
+   this._storeData(JSON.stringify(data));
+  }
   render() {
     
     const testNumber = this.props.navigation.state.params.test;
@@ -151,6 +152,9 @@ class Swiper extends React.Component {
         <SubmitTest 
         visible={this.state.modal}
         testNumber={testNumber}
+        name={this.props.name}
+        id={this.props.id}
+        answers={this.props.answers}
         
         />
         
@@ -161,7 +165,9 @@ class Swiper extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    answers: state.answers.answers
+    answers: state.answers.answers,
+    name: state.answers.name,
+    id: state.answers.id
   };
 };
 

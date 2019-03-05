@@ -22,11 +22,11 @@ class TestsScreen extends React.Component {
             console.log(progress)
             return <TestButton
                 key={index}
-                // onSelectTest={() => this.props.navigation.navigate('Test', { test: index, part: 1 })}
                 onSelectTest={() => this.props.navigation.navigate('TestParts', {test: index, title: `Test ${index + 1}`})}
                 answers={progress}
+                index={index}
 
-            >Test {index + 1}</TestButton>
+            >Test</TestButton>
         })
         return (
             <View style={styles.container}>
