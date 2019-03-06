@@ -25,6 +25,7 @@ import PartTwoReady from './src/screens/SectionTwoReady';
 import PartTwo from './src/screens/PartTwo';
 import TestParts from './src/screens/TestParts';
 import Examples from './src/screens/Examples';
+import LessonCategory from './src/screens/LessonCategory';
 
 
 
@@ -102,7 +103,8 @@ const MainNavigator = createStackNavigator({
   PartTwo: {screen: PartTwo},
   TestParts: {
     screen: TestParts
-  }
+  },
+  LessonCategory: {screen: LessonCategory}
    
 });
 

@@ -30,6 +30,7 @@ class HomeScreen extends React.Component {
             </View>
             <View style={{height: 290, marginBottom: 5}}>
                 <Feedbox
+                    handlePress={() => {this.props.navigation.navigate('Examples')}}
                     mainText={"Review example answers"}
                     subText={"It's a great way to improve"}
                     imageText={"Example Answers"}
