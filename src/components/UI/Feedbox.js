@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     constainer: {
         height: "100%",
         backgroundColor: "white",
+        elevation: 40
     },
     topView: {
         

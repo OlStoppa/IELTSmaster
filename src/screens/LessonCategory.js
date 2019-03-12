@@ -20,9 +20,11 @@ class LessonCategory extends React.Component {
         const displayLessonBoxes = lessons[category].map((lesson, index) => {
             return (
                 <LessonBox
+                    key={index}
                     name={lesson.name}
                     icon={lesson.icon}
                     style={lesson.style}
+                    onPress={() => this.props.navigation.navigate('LessonScreen', {content: lesson.content, title: lesson.name})}
 
                 />
             );
@@ -39,7 +41,7 @@ export default LessonCategory;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#d3d3d3",
+        backgroundColor: "#e0e0e0",
         height: "100%"
     }
 });

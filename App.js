@@ -26,6 +26,7 @@ import PartTwo from './src/screens/PartTwo';
 import TestParts from './src/screens/TestParts';
 import Examples from './src/screens/Examples';
 import LessonCategory from './src/screens/LessonCategory';
+import LessonScreen from './src/screens/LessonScreen';
 
 
 
@@ -104,9 +105,31 @@ const MainNavigator = createStackNavigator({
   TestParts: {
     screen: TestParts
   },
-  LessonCategory: {screen: LessonCategory}
-   
-});
+  LessonCategory: {screen: LessonCategory},
+  LessonScreen: {
+    screen: LessonScreen
+    
+    }
+
+},
+{
+  cardStyle: {
+    backgroundColor: "#e0e0e0"
+  },
+  defaultNavigationOptions: {
+    
+    headerStyle: {
+      backgroundColor: "#07575B"
+    },
+    headerTitleStyle: {
+      color: "white"
+    },
+    headerTintColor: "#fff"
+    
+  }
+}
+
+);
 
 
 

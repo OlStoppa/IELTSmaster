@@ -17,14 +17,7 @@ class PartTwo extends React.Component {
         countdown: true
     }
     static navigationOptions = ({ navigation }) => ({
-        title: `Part ${navigation.state.params.part}`,
-        
-            headerStyle:{
-                backgroundColor:'#07575B'
-            },
-            headerTitleStyle: {
-                color: "white"
-            }
+        title: `Part ${navigation.state.params.part}`
         });
 
     handleCountdown = () => {

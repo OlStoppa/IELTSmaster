@@ -9,15 +9,16 @@ class LessonsScreen extends React.Component {
 
     render() {
        return (
-
+        <ScrollView>
             <View style={styles.container}>
+            
                 <View>
                     <CategoryBox
                         onPress={() => { this.props.navigation.navigate("LessonCategory", { category: "general", title: "General Lessons" } )}}
                     >General
                     </CategoryBox>
                 </View>
-                <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", width: "100%" }}>
+                <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", width: "100%", verticalPadding: 20 }}>
                     <CategoryBox
                         boxStyle={{ backgroundColor: "#e0d90b" }}
                         onPress={() => { this.props.navigation.navigate("LessonCategory", { category: "partOne", title: "Part 1 Lessons" } )}}
@@ -33,7 +34,9 @@ class LessonsScreen extends React.Component {
                         onPress={() => { this.props.navigation.navigate("LessonCategory", { category: "partThree", title: "Part 3 Lessons" } )}}
                     >Part 3</CategoryBox>
                 </View>
+                
             </View>
+            </ScrollView>
         );
     }
 }
@@ -44,11 +47,12 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         flex: 1,
-        height: "100%",
+        // height: "100%",
         width: "100%",
         justifyContent: "space-evenly",
         alignItems: "center",
-        backgroundColor: "#d3d3d3"
+        backgroundColor: "#e0e0e0",
+        marginTop: 20
     }
 });
 

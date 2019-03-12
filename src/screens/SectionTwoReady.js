@@ -4,11 +4,7 @@ import MainText from '../components/UI/MainText';
 import Header from '../components/UI/Header';
 
 class SectionTwoReady extends React.Component {
-    static navigationOptions = ({ navigation }) => ({
-        headerStyle: {
-            backgroundColor: '#07575B'
-        }
-    });
+    
 
     render() {
         const testNumber = this.props.navigation.state.params.testNumber;
