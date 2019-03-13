@@ -28,7 +28,15 @@ class HomeScreen extends React.Component {
                     source={{uri: "https://cdn.pixabay.com/photo/2016/04/15/04/02/water-1330252__340.jpg"}}
                 />
             </View>
-            <View style={{height: 290, marginBottom: 5}}>
+            <View style={{height: 290, marginBottom: 10}}>
+                <Feedbox
+                    handlePress={() => {this.props.navigation.navigate('Lessons')}}
+                    mainText={"Lessons"}
+                    navigation={this.props.navigation}
+                    lessonData={"true"}    
+                />
+            </View>
+            <View style={{height: 290, marginBottom: 10}}>
                 <Feedbox
                     handlePress={() => {this.props.navigation.navigate('Examples')}}
                     mainText={"Review example answers"}

@@ -5,11 +5,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 const LessonBox = (props) => (
 
     <TouchableOpacity onPress={props.onPress}>
-        <View style={{flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black"}}>
+        <View style={{flexDirection: "row" }}>
         <View style={[styles.box, props.style]}>
             <Icon name={props.icon} size={50} color="white"/>
         </View>
-        <View style={{flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "white"}}>
+        <View style={{flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "white", borderBottomWidth:2, borderColor: "black"}}>
         <Text style={styles.label}>{props.name}</Text>
         </View>
         </View>

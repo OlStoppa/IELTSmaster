@@ -3,6 +3,9 @@ import { Text, View, Image } from 'react-native';
 import YellowNote from '../components/UI/YellowNote';
 import TextLink from '../components/UI/TextLink';
 import questionCard from '../assets/part2card.png';
+import sportQuestion from '../assets/sport_question_card.jpg';
+import BoldText from '../components/UI/BoldText';
+import mindmap from '../assets/mind-map.png';
 
 const lessons = {
     general: [
@@ -84,9 +87,18 @@ const lessons = {
             style: {
                 backgroundColor: "#557219"
             },
-            content: {
+            content: [
+                <Text key={0} style={{fontSize: 18}}>Answers to the questions in part 1 should be brief{"\,"} but not too short.{"\n"} The REDS strategy can help construct an answer of the appropriate length and level of detail.{"\n"}REDS stands for:</Text>,
+                <Text key={1} style={{fontSize: 18, paddingLeft: 20, fontWeight: "bold"}}>-Reason</Text>,
+                <Text key={2} style={{fontSize: 18, paddingLeft: 20, fontWeight: "bold"}}>-Example</Text>,
+                <Text key={3} style={{fontSize: 18, paddingLeft: 20, fontWeight: "bold"}}>-Detail</Text>,
+                <Text key={4} style={{fontSize: 18, paddingLeft: 20, fontWeight: "bold"}}>-Speculate{"\n"}</Text>,
+                <Text key={5} style={{fontSize: 18}}>The idea is that you give a direct answer and then give a reason{"\,"} offer an example{"\,"} give some details{"\,"} or you speculate depending on the question asked.{"\n"}  For example:</Text>,
+                <View key={6} style={{backgroundColor: "#e0e0e0", padding: 20}}><Text style={{fontSize: 18, fontWeight: "bold"}}>What job would you like to do?{"\n\n"}(Reason): I've always wanted to be a teacher. I love kids and I think it would be very rewarding.{"\n\n"}What skills do you need for this job?{"\n\n"}(Example): I believe you need to be articulate. Some children learn faster than others and you may have to explain things in different ways.{"\n\n"}Where are you from?{"\n\n"}(Detail): I come from Taoyuan in Taiwan. It's an industrial city in the northern part of the country.{"\n\n"} Do you exercise often?{"\n\n"}(Speculate): Unfortionately, not at the moment. As soon as I have a more free time, I'll definitely do more.</Text></View>,
+                <YellowNote key={7}>This strategy helps you give answers that are short enough, but that still feel full and allow you to show your grasp of vocabulary and grammar.</YellowNote>
+            ]
 
-            }
+            
         }
     ],
     partTwo: [
@@ -99,7 +111,7 @@ const lessons = {
             content: [
             <Text key={0} style={{fontSize: 18}}>     In part 2, the examiner will give you a card with details of the subject you will be required to speak about.{"\n\n"}You will be allowed <Text style={{fontWeight: "bold"}}>only 60 seconds</Text> to plan your answer. You may write notes in this time. You will then give your answer.{"\n\n"} You should aim to speak for <Text style={{fontWeight: "bold"}}>1 - 2 minutes.{"\n\n"}</Text>The card will look something like this:</Text>,
             <Image key={1} source={questionCard} style={{width: "100%", resizeMode: "contain", }} />,
-            <YellowNote key={2}>Speaking for an extended period can seem scary if you haven't practiced it much. Test takers often find they run out of things to say too quickly. For help with how to practice planning your answers, try our lesson on planning IELTS speaking part 2.</YellowNote>
+            <YellowNote key={2}>Speaking for an extended period can seem scary if you haven't practiced it much. Test takers often find they run out of things to say too quickly. For help with how to practice planning your answers, try our lessons on planning IELTS speaking part 2.</YellowNote>
             ]
         },
         {
@@ -108,9 +120,16 @@ const lessons = {
             style: {
                 backgroundColor: "#557219"
             },
-            content: {
+            content: [
+                <Text key={0} style={{fontSize: 18}}>You will be allowed 60 seconds to plan your extended answer. Test takers find that planning a two minute talk in this short amount of time can be very challenging if you're not prepared.{"\n"}Many of our students have found this mind-mapping technique useful.{"\n\n"}Consider the following question card:</Text>,
+                <Image key={1} source={sportQuestion} style={{width: "100%", resizeMode: "contain"}}/>,
+                <Text key={2} style={{fontSize: 18}}>   By mind-mapping we organize our ideas in terms of <BoldText>what, who, where, when, why </BoldText>and <BoldText>how.</BoldText> </Text>,
+                <Image key={3} source={mindmap} style={{  width:"100%", resizeMode: "center"}}/>
 
-            }
+
+            ]
+
+            
         }
     ],
     partThree: [
@@ -120,9 +139,13 @@ const lessons = {
             style: {
                 backgroundColor: "#122345"
             },
-            content: {
+            content: [
+                <Text key={0} style={{fontSize: 18}}>   In speaking part 3, the examiner will ask a broader range of questions based on the topic that you had in speaking part 2.{"\n"} The questions require you to expand your answers further with explanation and examples.{"\n"}The examiner will control the time.{"\n"}   This final part of the test will take 4-5 minutes.{"\n\n"}If your part 2 topic was to describe a news story you saw recently, the part 3 questions may look something like:</Text>,
+                <View key={1} style={{backgroundColor: "#e0e0e0", padding: 20}}><Text style={{fontSize: 18, fontWeight: "bold"}}>-Do you believe everything you read in the newspapers?{"\n\n"}-How do most people get their news in your country?{"\n\n"}-How do you think people will get their news in the future?</Text></View>,
+                <YellowNote key={2}>  Your answers in part 3 must be longer and more developed than in part 1.{"\n"}For advice planning your answers for this section, check out our lesson on part 3 strategy.</YellowNote>
+            ]
 
-            }
+            
         },
         {
             name: "Part Three Strategy",
