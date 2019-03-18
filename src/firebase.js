@@ -1,13 +1,20 @@
 import Firebase from '@firebase/app';
-import '@firebase/storage'
+import '@firebase/storage';
+import { FIREBASE_API_KEY,
+    AUTH_DOMAIN,
+    DATABASE_URL,
+    FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET,
+    MESSAGE_ID
+    } from 'react-native-dotenv';
 
 let config = {
-    apiKey: "AIzaSyCmNs9mcokB0uRZaFy1Vet6qXZEC4eKS3Y",
-    authDomain: "ielts-master-5d1d7.firebaseapp.com",
-    databaseURL: "https://ielts-master-5d1d7.firebaseio.com",
-    projectId: "ielts-master-5d1d7",
-    storageBucket: "ielts-master-5d1d7.appspot.com",
-    messagingSenderId: "49154493490"
+    apiKey: FIREBASE_API_KEY,
+    authDomain: AUTH_DOMAIN,
+    databaseURL: DATABASE_URL,
+    projectId: FIREBASE_PROJECT_ID,
+    storageBucket: FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: MESSAGE_ID
 };
 
 let app = Firebase.initializeApp(config);
