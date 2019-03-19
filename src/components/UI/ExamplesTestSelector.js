@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 
-const LessonBox = props => (
+const ExamplesTestSelector = props => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={{ flexDirection: 'row' }}>
       <View style={[styles.box, props.style]}>
-        <Icon name={props.icon} size={50} color="white" />
+        <Text style={styles.number}>{props.testNumber}</Text>
       </View>
       <View
         style={{
@@ -24,7 +23,7 @@ const LessonBox = props => (
   </TouchableOpacity>
 );
 
-export default LessonBox;
+export default ExamplesTestSelector;
 
 const styles = StyleSheet.create({
   box: {
@@ -39,4 +38,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '400',
   },
+  number: {
+      fontSize: 34,
+      fontWeight: 'bold',
+      color: 'white'
+  }
 });

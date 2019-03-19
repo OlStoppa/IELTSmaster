@@ -1,29 +1,29 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Button } from "react-native";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { connect } from "react-redux";
-import SubmitTest from "../components/components/SubmitTest";
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { connect } from 'react-redux';
+import SubmitTest from '../components/components/SubmitTest';
 
 class TestParts extends React.Component {
   state = {
-    modal: false
+    modal: false,
   };
 
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
 
     headerStyle: {
-      backgroundColor: "#07575B"
+      backgroundColor: '#07575B',
     },
     headerTitleStyle: {
-      color: "white"
-    }
+      color: 'white',
+    },
   });
 
   modalHandler = () => {
     this.setState(prevState => {
       return {
-        modal: !prevState.modal
+        modal: !prevState.modal,
       };
     });
   };
@@ -46,12 +46,12 @@ class TestParts extends React.Component {
             tintColor="#00e0ff"
             backgroundColor="#3d5875"
           >
-            {fill => (
+            {() => (
               <TouchableOpacity
                 onPress={() =>
-                  this.props.navigation.navigate("Test", {
+                  this.props.navigation.navigate('Test', {
                     test: testNumber,
-                    part: 1
+                    part: 1,
                   })
                 }
               >
@@ -81,12 +81,12 @@ class TestParts extends React.Component {
                   partTwoPercentComplete === 0
                     ? () =>
                         // eslint-disable-next-line react/destructuring-assignment
-                        this.props.navigation.navigate("PartTwoReady", {
+                        this.props.navigation.navigate('PartTwoReady', {
                           testNumber,
                           part: 2,
                         })
                     : () =>
-                        this.props.navigation.navigate("PartTwo", {
+                        this.props.navigation.navigate('PartTwo', {
                           testNumber,
                           part: 2,
                         })
@@ -115,9 +115,9 @@ class TestParts extends React.Component {
             {fill => (
               <TouchableOpacity
                 onPress={() =>
-                  this.props.navigation.navigate("Test", {
+                  this.props.navigation.navigate('Test', {
                     test: testNumber,
-                    part: 3
+                    part: 3,
                   })
                 }
               >
@@ -151,7 +151,7 @@ class TestParts extends React.Component {
 const mapStateToProps = state => {
   return {
     answers: state.answers.answers,
-    name: state.answers.name
+    name: state.answers.name,
   };
 };
 
@@ -159,26 +159,26 @@ export default connect(mapStateToProps)(TestParts);
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    backgroundColor: "#e0e0e0",
-    flex: 1
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: '#e0e0e0',
+    flex: 1,
   },
   button: {
     height: 100,
     width: 100,
-    backgroundColor: "#c4dfe6",
+    backgroundColor: '#c4dfe6',
     borderRadius: 50,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    elevation: 40
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    elevation: 40,
   },
   buttonInner: {
-    width: "50%",
-    justifyContent: "center",
-    alignItems: "center"
-  }
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
