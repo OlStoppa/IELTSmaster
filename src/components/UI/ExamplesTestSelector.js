@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   number: {
-      fontSize: 34,
-      fontWeight: 'bold',
-      color: 'white'
-  }
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: 'white',
+  },
 });

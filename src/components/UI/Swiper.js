@@ -18,8 +18,6 @@ class Swiper extends React.Component {
     modal: false,
   };
 
-  
-
   handleAddAnswer = (path, testNumber, index, part) => {
     console.log(part);
     this.props.onAddAnswer(path, testNumber, index, part);
@@ -48,8 +46,12 @@ class Swiper extends React.Component {
             text="Continue"
             onPress={
               index + 1 === testData[testNumber][testPartPath].length
-                ? this.props.navigation.pop()
-                : this.refs.swiper._scrollToIndex(index + 1)
+                ? () => {
+                    this.props.navigation.pop();
+                  }
+                : () => {
+                    this.refs.swiper._scrollToIndex(index + 1);
+                  }
             }
           />
         </View>
@@ -91,7 +93,7 @@ class Swiper extends React.Component {
 
   render() {
     const testNumber = this.props.navigation.state.params.test;
-    const part = this.props.navigation.state.params.part;
+    const {part} = this.props.navigation.state.params;
     const testPartPath = `sec${part}`;
     const statePath = `part${part}`;
     const questionPath = `sec${part}Audio`;

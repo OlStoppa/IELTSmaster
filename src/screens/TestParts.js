@@ -80,7 +80,6 @@ class TestParts extends React.Component {
                 onPress={
                   partTwoPercentComplete === 0
                     ? () =>
-                        // eslint-disable-next-line react/destructuring-assignment
                         this.props.navigation.navigate('PartTwoReady', {
                           testNumber,
                           part: 2,
@@ -112,7 +111,7 @@ class TestParts extends React.Component {
             tintColor="#00e0ff"
             backgroundColor="#3d5875"
           >
-            {fill => (
+            {() => (
               <TouchableOpacity
                 onPress={() =>
                   this.props.navigation.navigate('Test', {

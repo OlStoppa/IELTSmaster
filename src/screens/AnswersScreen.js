@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Modal, View, Text, StyleSheet, ScrollView } from 'react-native';
 import AnswerTextBlock from '../components/UI/AnswerTextBlock';
 import TextLink from '../components/UI/TextLink';
 import testData from '../fixtures/testData';

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ActivityIndicator, AsyncStorage, StatusBar, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, AsyncStorage, StyleSheet, View, Image } from 'react-native';
 import { setInit } from '../store/actions/answers';
+import logo from '../assets/gradeMy.png';
 
 class AuthLoadingScreen extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class AuthLoadingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
-        <StatusBar barStyle="default" />
+        <Image source={logo} />
       </View>
     );
   }
@@ -36,7 +37,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: '#66A5AD',
+    justifyContent: 'center',
   },
 });
 const mapDispatchToProps = dispatch => {
