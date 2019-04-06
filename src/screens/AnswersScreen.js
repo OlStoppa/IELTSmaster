@@ -20,32 +20,28 @@ class AnswersScreen extends React.Component {
     const { part, testNum } = this.props.navigation.state.params;
 
     let content = [];
-    switch (part) {
-      case 1:
-        content = testData[testNum].sec1.map((question, index) => {
-          return (
-            <View>
-              <View style={{ backgroundColor: 'white', padding: 20 }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{question}</Text>
-              </View>
-              <AnswerTextBlock>
-                {testAnswersData[testNum].part1[index].map(answer => {
-                  if (typeof answer === 'object') {
-                    return (
-                      <TextLink onPress={() => this.setModalVisible(answer.link)}>
-                        {answer.link}
-                      </TextLink>
-                    );
-                  }
-                  return answer;
-                })}
-              </AnswerTextBlock>
+    if (part === 1 || part === 3) {
+      content = testData[testNum][part].map((question, index) => {
+        return (
+          <View>
+            <View style={{ backgroundColor: 'white', padding: 20 }}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{question}</Text>
             </View>
-          );
-        });
-        break;
-      default:
-        content = [];
+            <AnswerTextBlock>
+              {testAnswersData[testNum][part][index].map(answer => {
+                if (typeof answer === 'object') {
+                  return (
+                    <TextLink onPress={() => this.setModalVisible(answer.link)}>
+                      {answer.link}
+                    </TextLink>
+                  );
+                }
+                return answer;
+              })}
+            </AnswerTextBlock>
+          </View>
+        );
+      });
     }
     return content;
   };

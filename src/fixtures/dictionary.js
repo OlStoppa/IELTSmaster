@@ -1,5 +1,6 @@
 const dictionary = {
   suburbs: {
+    print: 'suburbs',
     type: 'noun',
     definition: 'Residential area on the outskirts of a city',
   },

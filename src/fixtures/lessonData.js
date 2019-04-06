@@ -83,8 +83,8 @@ const lessons = {
         <Text key={0} style={{ fontSize: 18 }}>
           In our long experience of IELTS instruction, we have found that the ability to use and
           undertand paraphrasing is one of the most important skills to have when trying to achieve
-          a top band score.{'\n\n'} Being able to 'say something in a different way' will help test
-          takers get better results in all parts of the IELTS test.{'\n\n'}In the speaking section,
+          a top band score.{'\n\n'} Being able to {'}say something in a different way{'} will help
+          test takers get better results in all parts of the IELTS test.{'\n\n'}In the speaking
           paraphrasing should be used whenever you want to use parts of the question in your
           answers.{'\n\n'}For example, when asked a question like:
         </Text>,
