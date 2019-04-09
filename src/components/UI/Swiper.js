@@ -27,7 +27,7 @@ class Swiper extends React.Component {
     this.props.onDeleteAnswer(index, testNumber, part);
   };
 
-  testFinished = (answerPath, testPartPath, index, testNumber) => {
+  testFinished = (answerPath, part, index, testNumber) => {
     const { part1, part2, part3 } = this.props.answers;
     const partOne = part1[testNumber].filter(answer => answer !== 0).length;
     const partTwo = part2[testNumber][0] ? 1 : 0;
@@ -45,7 +45,7 @@ class Swiper extends React.Component {
           <ProgressButton
             text="Continue"
             onPress={
-              index + 1 === testData[testNumber][testPartPath].length
+              index + 1 === testData[testNumber][part].length
                 ? () => {
                     this.props.navigation.pop();
                   }
@@ -93,14 +93,14 @@ class Swiper extends React.Component {
 
   render() {
     const testNumber = this.props.navigation.state.params.test;
-    const {part} = this.props.navigation.state.params;
+    const { part } = this.props.navigation.state.params;
     const testPartPath = `sec${part}`;
     const statePath = `part${part}`;
     const questionPath = `sec${part}Audio`;
-    const content = testData[testNumber][testPartPath].map((question, index) => {
+    const content = testData[testNumber][part].map((question, index) => {
       const audioPath = testData[testNumber][questionPath][index];
       const answerPath = this.props.answers[statePath][testNumber][index];
-      const testFinished = this.testFinished(answerPath, testPartPath, index, testNumber);
+      const testFinished = this.testFinished(answerPath, part, index, testNumber);
 
       return (
         <View key={index} style={[styles.child]}>

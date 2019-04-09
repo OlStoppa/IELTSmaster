@@ -23,7 +23,7 @@ class AnswersScreen extends React.Component {
     if (part === 1 || part === 3) {
       content = testData[testNum][part].map((question, index) => {
         return (
-          <View>
+          <View key={index}>
             <View style={{ backgroundColor: 'white', padding: 20 }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{question}</Text>
             </View>
@@ -31,7 +31,7 @@ class AnswersScreen extends React.Component {
               {testAnswersData[testNum][part][index].map(answer => {
                 if (typeof answer === 'object') {
                   return (
-                    <TextLink onPress={() => this.setModalVisible(answer.link)}>
+                    <TextLink key={index} onPress={() => this.setModalVisible(answer.link)}>
                       {answer.link}
                     </TextLink>
                   );
@@ -42,8 +42,25 @@ class AnswersScreen extends React.Component {
           </View>
         );
       });
+      return content;
     }
-    return content;
+    return (
+      <View>
+        {testData[testNum][`sec${part}`].map(line => {
+          return (<Text>{line}</Text>);
+        })}
+        <AnswerTextBlock>
+          {testAnswersData[testNum][part].map(answer => {
+            if (typeof answer === 'object') {
+              return (
+                <TextLink onPress={() => this.setModalVisible(answer.link)}>{answer.link}</TextLink>
+              );
+            }
+            return answer;
+          })}
+        </AnswerTextBlock>
+      </View>
+    );
   };
 
   render() {

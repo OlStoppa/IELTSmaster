@@ -20,7 +20,11 @@ class ExampleTestParts extends React.Component {
           </CategoryBox>
         </View>
         <View>
-          <CategoryBox partNum={2}>Part 2</CategoryBox>
+          <CategoryBox 
+            partNum={2}
+            onPress={() => this.props.navigation.navigate('AnswersScreen', { testNum, part: 2 })}
+
+            >Part 2</CategoryBox>
         </View>
         <View>
           <CategoryBox

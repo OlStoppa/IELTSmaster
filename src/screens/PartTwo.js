@@ -113,8 +113,6 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     justifyContent: 'space-evenly',
-    borderWidth: 1,
-    borderColor: 'black',
     padding: 20,
     fontSize: 20,
     backgroundColor: '#f9f9f9',

@@ -166,19 +166,29 @@ const modelAnswers = [
   {
     1: [
       [
-        "I'm pretty certain that most inhabitants of my country live in apartments. To my mind, this is because space is in such short supply in the cities.",
+        "I'm pretty certain that most inhabitants of my country live in apartments. To my mind, this is because space is in such ",
+        { link: 'short supply' },
+        ' in the cities.',
       ],
       [
-        "Apart from relaxing at home in front of the TV, people love going to sing karaoke with their friends. At the weekend, you have to book ahead of time as it's such a popular pastime.",
+        "Apart from relaxing at home in front of the TV, people love going to sing karaoke with their friends. At the weekend, you have to book ahead of time as it's such a popular ",
+        { link: 'pastime' },
+        ' .',
       ],
       [
-        "I believe people are most pleased by the fact that it's a very safe place to be. Elderly people can walk the streets at night without fear of being robbed or hassled.",
+        "I believe people are most pleased by the fact that it's a very safe place to be. ",
+        { link: 'Elderly' },
+        ' people can walk the streets at night without fear of being robbed or hassled.',
       ],
       [
-        'I truly believe my home country would be a great tourist destination. We have a huge variation of cool things to do. Maybe in the years to come it will get more recognition in this regard.',
+        'I truly believe my home country would be a great tourist destination. We have a huge variation of cool things to do. Maybe in the years to come it will get more ',
+        { link: 'recognition' },
+        'in this regard.',
       ],
       [
-        "Where I'm from, noodles are a staple food so I've always loved to eat many noodle dishes. Particularly, beef noodle soup.",
+        "Where I'm from, noodles are a staple food so I've always loved to eat many noodle dishes. ",
+        { link: 'Particularly' },
+        ' , beef noodle soup.',
       ],
       [
         "It depends, if I'm eating alone, then I'd probably rather eat at home in my living room, but if I'm with others then I prefer to go out because there's more space and we don't have to worry about cleaning up after.",
@@ -187,21 +197,44 @@ const modelAnswers = [
         "We have a certain type of pineapple cake that people often buy to take back for their loved ones when they visit our country. I'd definitely encourage you to try it because it tastes great.",
       ],
       [
-        'The kind of things people eat has changed loads in the recent years. The pace of life is so fast now that lots of folks just grab a bite from the convenience store rather than cooking food for themselves.',
+        'The kind of things people eat has changed ',
+        { link: 'loads' },
+        ' in the recent years. The pace of life is so fast now that lots of folks just grab a bite from the convenience store rather than cooking food for themselves.',
       ],
     ],
     2: [
-      "I've recently found myself completely addicted to a TV show called 'Game of Thrones'. A few of my friends have been going on about how great it is for years but it wasn't until I watched the first couple of episodes that I became completely hooked.{'\n'} The story is a fantasy set in a mythical land called Westeros and it's all about the turbulent relationship between a few key families. The writer has done such an amazing job. Every new episode I watch has my hair standing on end and I just can't wait to find out what is going to happen to the main characters next. The program is really popular around the world so I know it's not just me that it has had such an effect on. Now, because I enjoy it so much, I've even joined some internet communities that talk about where the plot will go in the future. I'm really looking forward to seeing what will happen but I expect it's going to be bittersweet when it actually ends. ",
+      "I've recently found myself completely ",
+      { link: 'addicted' },
+      " to a TV show called 'Game of Thrones'. A few of my friends have been going on about how great it is for years but it wasn't until I watched the first couple of episodes that I became completely hooked.{'\n'} The story is a fantasy set in a ",
+      { link: 'mythical' },
+      " land called Westeros and it's all about the ",
+      { link: 'turbulent' },
+      " relationship between a few key families. The writer has done such an amazing job. Every new episode I watch has my hair standing on end and I just can't wait to find out what is going to happen to the main characters next. The program is really popular around the world so I know it's not just me that it has had such an effect on. Now, because I enjoy it so much, I've even joined some internet communities that talk about where the ",
+      { link: 'plot' },
+      " will go in the future. I'm really looking forward to seeing what will happen but I expect it's going to be ",
+      { link: 'bittersweet' },
+      ' when it actually ends. ',
     ],
     3: [
       [
-        "I'm of the opinion htat most people who still love going to see films at the movie theatre go because of the unique atmosphere that a place like that has. If you're a film lover and you've been wting for a new one to come out for a while, it must be nice to go and share the experience with lots of like-minded people.",
+        "I'm of the opinion that most people who still love going to see films at the movie theatre go because of the ",
+        { link: 'unique' },
+        " atmosphere that a place like that has. If you're a film lover and you've been wting for a new one to come out for a while, it must be nice to go and share the experience with lots of ",
+        { link: 'like-minded' },
+        ' people.',
       ],
       [
-        "I think most people now agree that, for better or worse, films can have a huge impact on people. I suppose that's why companies are prepared to pay so much money to place their products in them and also it's a good reason to have age restrictions so that young people can't go to see movies that have violent or offensive content.",
+        'I think most people now agree that, ',
+        { link: 'for better or worse' },
+        " , films can have a huge impact on people. I suppose that's why companies are prepared to pay so much money to place their products in them and also it's a good reason to have age restrictions so that young people can't go to see movies that have ",
+        { link: 'violent' },
+        ' or offensive content.',
       ],
       [
-        "At the end of the day, I don't really believe it should be the responsibility of a films writer or director to worry about the effect their films have on people. It should be up to the viewer as an individual to behave appropriately whatever influence a film may have had on them. People are too quick to shift the blame these days.",
+        { link: 'At the end of the day' },
+        ", I don't really believe it should be the responsibility of a films writer or director to worry about the effect their films have on people. It should be up to the viewer as an individual to behave ",
+        { link: 'appropriately' },
+        ' whatever influence a film may have had on them. People are too quick to shift the blame these days.',
       ],
     ],
   },
@@ -211,10 +244,14 @@ const modelAnswers = [
         "It's been so long since I've been to the cinema that I can't actually remember when the last time was. More than a few years ago, definitely.",
       ],
       [
-        'I reckon that a lot of people in my home town still go out to see films pretty regularly. I often pass by the pictures on my way home from work and there always seems to be people standing in line for tickets.',
+        'I reckon that a lot of people in my home town still go out to see films pretty regularly. I often pass by the ',
+        { link: 'pictures' },
+        ' on my way home from work and there always seem to be people standing in line for tickets.',
       ],
       [
-        "With me, it often depends on what kind of day I've had. If I'm relaxed and want some excitement I'll probably favour an action movie but if I've had a hard day I might opt for a comedy."
+        "With me, it often depends on what kind of day I've had. If I'm relaxed and want some excitement I'll probably favour an action movie but if I've had a hard day I might ",
+        { link: 'opt for' },
+        ' a comedy.',
       ],
       [
         "I'd much rather stay at home than go to a movie theatre. I suppose there are times when I miss the ",
@@ -222,17 +259,66 @@ const modelAnswers = [
         ' a cinema has, but I think being able to control the environment more than makes up for that.',
       ],
       [
-        "There are loads if important and unique celebrations in Chinese culture but I think the one that stands out most is the New Year festival. It's propbably the most well-known around the world."
+        'There are loads if important and ',
+        { link: 'unique' },
+        " celebrations in Chinese culture but I think the one that stands out most is the New Year festival. It's propbably the most well-known around the world.",
       ],
       [
-        "I suppose it depends which one you're talking about because in my culture we celebrate the beginning of the new year and also the lunar new year. Both celebrations share some common factors, like fireworks and getting together with family and friends."
+        "I suppose it depends which one you're talking about because in my culture we celebrate the beginning of the new year and also the lunar new year. Both celebrations share some ",
+        { link: 'common' },
+        ' factors, like fireworks and getting together with family and friends.',
       ],
       [
-        
-      ]
+        "The way i see it, any time I didn't have to go to school was ",
+        { link: 'immensely' },
+        " enjoyable, but if I had to choose, I suppose I'd pick moon festival because where I'm from, that's the time of year that we get to eat a ",
+        { link: 'delicacy' },
+        ' called moon cakes. ',
+      ],
+      [
+        "I'd love to go to Sydney for Australia day. Some of my friends have spent ",
+        { link: 'extended' },
+        " periods in Australia and what they tell me about it strikes me as really cool. If I get the chance, I'll definitely give it a go.",
+      ],
     ],
-    2: [],
-    3: [],
+    2: [
+      'So, when I think of shopping malls, the only one that springs to mind is a large one called Metrowalk that is just outside the city where I grew up. Being on the ',
+      { link: 'outskirts' },
+      ' of the city, I always used to go there in the car with my parents, or when I was older, I would sometimes take the ',
+      { link: 'shuttle bus' },
+      " , with my friends, from the city centre. As shopping centres go, it's not bad. They have a large variety of stores selling name brand goods and clothes and there is a huge supermarket in the basement. I'm not really much of a shopper, so I would enjoy going to the ",
+      { link: 'food court' },
+      " most, although it got really busy at the weekend and it used to take us a long time to find somewhere to sit. I have good memories of going to the cinema and amusement arcade with my friends from secondary school. I didn't really realize how lucky I was to be able to while away my weekends doing things like that. Currently, I find myself too busy to spend the whole day ",
+      { link: 'hanging out' },
+      ' with friends. I wonder if people will still be going to shopping centers ',
+      { link: 'decades' },
+      " from now or if online shopping will completely take over. Anyway, if you enjoy shopping in a busy environment, it's probably worth going there.",
+    ],
+    3: [
+      [
+        'As I see it, you can get your ',
+        { link: 'groceries' },
+        " in the supermarket, which is very convenient as some of them are even open 24 hours a day now but a lot of people still go to the traditional food markets. I would advise the latter because the food is generally cheaper and it's usually ",
+        { link: 'locally sourced' },
+        '.',
+      ],
+      [
+        "I would think that if you're interested in fashion, then it'd probably nice to go to ",
+        { link: 'boutique' },
+        " shops to search for clothes. Personally, I don't really enjoy spending lots of time trying things on so I go to larger stores where I know they will probably have the stuff I like. My sister is always looking for unique stores to go shopping in. I don't really understand what all the ",
+        { link: 'fuss' },
+        ' is about.',
+      ],
+      [
+        'There are a number of ',
+        { link: 'benefits' },
+        " to shopping online. The thing I like most about it is that there is no pressure to buy. Often in stores, people work on comission so they follow you around trying too hard to help. When, I'm ",
+        { link: 'browsing' },
+        " a store on my computer from the comfort of my sofa, I can spend all the time I like looking and still not buy anything if I don't want too without feeling ",
+        { link: 'awkward' },
+        '.',
+      ],
+    ],
   },
 ];
 export default modelAnswers;
