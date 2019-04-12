@@ -18,6 +18,21 @@ class Swiper extends React.Component {
     modal: false,
   };
 
+  componentDidMount() {
+    Orientation.lockToPortrait();
+  }
+
+  componentWillUnmount() {
+    Orientation.unlockAllOrientations();
+    const { name, id, answers } = this.props;
+    const data = {
+      name,
+      id,
+      answers,
+    };
+    this._storeData(JSON.stringify(data));
+  }
+
   handleAddAnswer = (path, testNumber, index, part) => {
     console.log(part);
     this.props.onAddAnswer(path, testNumber, index, part);
@@ -68,22 +83,16 @@ class Swiper extends React.Component {
     }
   };
 
-  componentDidMount() {
-    Orientation.lockToPortrait();
-  }
-
-  componentWillUnmount() {
-    Orientation.unlockAllOrientations();
-    const { name, id, answers } = this.props;
-    const data = {
-      name,
-      id,
-      answers,
-    };
-    this._storeData(JSON.stringify(data));
-  }
-
   modalHandler = () => {
+    if (!this.state.modal) {
+      const { name, id, answers } = this.props;
+      const data = {
+        name,
+        id,
+        answers,
+      };
+      this._storeData(JSON.stringify(data));
+    }
     this.setState(prevState => {
       return {
         modal: !prevState.modal,
@@ -128,6 +137,7 @@ class Swiper extends React.Component {
           name={this.props.name}
           id={this.props.id}
           answers={this.props.answers}
+          closeModal={this.modalHandler}
         />
       </View>
     );

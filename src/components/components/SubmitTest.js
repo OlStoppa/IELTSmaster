@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, Text, View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Modal, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
+import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../UI/DefaultInput';
 import ProgressButton from '../UI/ProgressButton';
 import validate from '../../utility/validation';
@@ -80,7 +81,7 @@ class SubmitTest extends React.Component {
       thisTest.map((answer, index) => {
         const ref = storage.ref(`${name}/${index}.mp4`);
         const { Blob } = RNFetchBlob.polyfill;
-        const {fs} = RNFetchBlob;
+        const { fs } = RNFetchBlob;
         const path = answer.slice(7);
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
@@ -93,7 +94,7 @@ class SubmitTest extends React.Component {
             return ref.put(audioBlob, {
               contentType: 'media/mp4',
               customMetadata: {
-                email: email,
+                email,
               },
             });
           })
@@ -111,7 +112,9 @@ class SubmitTest extends React.Component {
     return (
       <Modal visible={this.props.visible} onRequestClose={() => {}} animationType="slide">
         <Header style={{ height: 50 }}>Get Your Band Score</Header>
-
+        <TouchableOpacity onPress={this.props.closeModal} style={styles.closeButton}>
+          <Icon name="ios-arrow-back" color="white" size={34} />
+        </TouchableOpacity>
         <View style={styles.container}>
           <View style={styles.note}>
             {this.state.uploading ? (
@@ -183,5 +186,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'white',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
+    width: 70
   },
 });

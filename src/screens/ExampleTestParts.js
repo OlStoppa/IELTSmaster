@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import CategoryBox from '../components/UI/CategoryBox';
 
 class ExampleTestParts extends React.Component {
@@ -7,10 +7,33 @@ class ExampleTestParts extends React.Component {
     title: `Test ${navigation.state.params.testNum + 1} Answers`,
   });
 
+  constructor(props) {
+    super(props);
+    Dimensions.addEventListener('change', this.handleView);
+  }
+
+  state = {
+    viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape',
+  };
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.handleView);
+  }
+
+  handleView = dims => {
+    this.setState({
+      viewMode: dims.window.height > 500 ? 'portrait' : 'landscape',
+    });
+  };
+
   render() {
     const { testNum } = this.props.navigation.state.params;
     return (
-      <View style={styles.container}>
+      <View
+        style={
+          this.state.viewMode === 'portrait' ? styles.containerPortrait : styles.containerLandscape
+        }
+      >
         <View>
           <CategoryBox
             partNum={1}
@@ -20,11 +43,12 @@ class ExampleTestParts extends React.Component {
           </CategoryBox>
         </View>
         <View>
-          <CategoryBox 
+          <CategoryBox
             partNum={2}
             onPress={() => this.props.navigation.navigate('AnswersScreen', { testNum, part: 2 })}
-
-            >Part 2</CategoryBox>
+          >
+            Part 2
+          </CategoryBox>
         </View>
         <View>
           <CategoryBox
@@ -39,11 +63,16 @@ class ExampleTestParts extends React.Component {
   }
 }
 
-const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-  container: {
-    height,
-    width,
+  containerPortrait: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    paddingBottom: 30,
+  },
+  containerLandscape: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingBottom: 30,

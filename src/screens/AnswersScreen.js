@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Modal, View, Text, ScrollView } from 'react-native';
 import AnswerTextBlock from '../components/UI/AnswerTextBlock';
 import TextLink from '../components/UI/TextLink';
 import testData from '../fixtures/testData';
@@ -7,6 +7,10 @@ import testAnswersData from '../fixtures/testAnswersData';
 import DictionaryModal from '../components/components/DictionaryModal';
 
 class AnswersScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: `Part ${navigation.state.params.part} Answers`,
+  });
+
   state = {
     modalVisible: false,
     selectedWord: '',
@@ -46,14 +50,20 @@ class AnswersScreen extends React.Component {
     }
     return (
       <View>
-        {testData[testNum][`sec${part}`].map(line => {
-          return (<Text>{line}</Text>);
-        })}
+        <View style={{ backgroundColor: 'white', padding: 10 }}>
+          {testData[testNum][`sec${part}`].map((line, index) => {
+            return (
+              <Text key={index} style={{ fontSize: 18 }}>
+                {line}
+              </Text>
+            );
+          })}
+        </View>
         <AnswerTextBlock>
-          {testAnswersData[testNum][part].map(answer => {
+          {testAnswersData[testNum][part].map((answer, index) => {
             if (typeof answer === 'object') {
               return (
-                <TextLink onPress={() => this.setModalVisible(answer.link)}>{answer.link}</TextLink>
+                <TextLink key={index} onPress={() => this.setModalVisible(answer.link)}>{answer.link}</TextLink>
               );
             }
             return answer;

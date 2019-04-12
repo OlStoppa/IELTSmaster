@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import testData from '../fixtures/testData';
 import TestButton from '../components/UI/TestButton';
@@ -32,7 +32,11 @@ class TestsScreen extends React.Component {
         </TestButton>
       );
     });
-    return <View style={styles.container}>{buttons}</View>;
+    return (
+      <ScrollView>
+        <View style={styles.container}>{buttons}</View>
+      </ScrollView>
+    );
   }
 }
 
