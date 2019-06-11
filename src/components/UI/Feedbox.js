@@ -21,7 +21,7 @@ const Feedbox = props => {
             icon={lesson.icon}
             style={[lesson.style]}
             onPress={() =>
-                props.navigation.navigate('LessonScreen', {
+              props.navigation.navigate('LessonScreen', {
                 content: lesson.content,
                 title: lesson.name,
               })

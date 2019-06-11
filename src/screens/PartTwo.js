@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import MainText from '../components/UI/MainText';
 import AnswerButton from '../components/UI/AnswerButton';
 import testData from '../fixtures/testData';
 import Countdown from '../components/components/Countdown';
@@ -9,13 +8,24 @@ import { addAnswer, deleteAnswer } from '../store/actions/answers';
 import ProgressButton from '../components/UI/ProgressButton';
 
 class PartTwo extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: `Part ${navigation.state.params.part}`,
+  });
+
   state = {
     countdown: true,
   };
 
-  static navigationOptions = ({ navigation }) => ({
-    title: `Part ${navigation.state.params.part}`,
-  });
+  componentDidMount() {
+    const { testNumber } = this.props.navigation.state.params;
+    if (this.props.answers.part2[testNumber][0] !== 0) {
+      this.handleCountdown();
+    }
+  }
+
+  handleDeleteAnswer = (index, testNumber, part) => {
+    this.props.onDeleteAnswer(index, testNumber, part);
+  };
 
   handleCountdown = () => {
     this.setState({
@@ -27,17 +37,6 @@ class PartTwo extends React.Component {
     console.log(part);
     this.props.onAddAnswer(path, testNumber, index, part);
   };
-
-  handleDeleteAnswer = (index, testNumber, part) => {
-    this.props.onDeleteAnswer(index, testNumber, part);
-  };
-
-  componentDidMount() {
-    const { testNumber } = this.props.navigation.state.params;
-    if (this.props.answers.part2[testNumber][0] !== 0) {
-      this.handleCountdown();
-    }
-  }
 
   render() {
     const { testNumber } = this.props.navigation.state.params;

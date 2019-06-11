@@ -5,13 +5,11 @@ import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const RecordButton = props => (
-  // <View style={styles.buttonContainer}>
   <TouchableOpacity style={styles.recordButton} onPress={props.onRecord}>
     <View style={styles.recordButton}>
       <Icon name="md-microphone" size={80} color="red" />
     </View>
   </TouchableOpacity>
-  // </View>
 );
 
 export default RecordButton;

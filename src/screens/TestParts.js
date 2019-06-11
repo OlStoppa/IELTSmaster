@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#e0e0e0',
     height: '75%',
-    
   },
   buttonContainerLandscape: {
     display: 'flex',
@@ -202,7 +201,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
     width: '100%',
     height: '75%',
-    
   },
   button: {
     height: 100,
