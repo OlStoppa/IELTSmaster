@@ -1,5 +1,5 @@
 {
-  "name": "ieltsmaster",
+  "name": "grademyieltsspeaking",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
     "prettier": "^1.16.4",
     "react": "16.6.3",
     "react-native": "0.57.8",
-    "react-native-audio-recorder-player": "^2.1.2",
+    "react-native-audio-recorder-player": "^2.1.4",
     "react-native-circular-progress": "^1.1.0",
     "react-native-dotenv": "^0.2.0",
     "react-native-gesture-handler": "^1.0.15",
@@ -28,8 +28,8 @@
     "react-native-sound": "^0.10.12",
     "react-native-svg": "^9.2.4",
     "react-native-swiper-flatlist": "^1.0.9",
-    "react-native-vector-icons": "^6.2.0",
-    "react-native-video": "^4.3.1",
+    "react-native-vector-icons": "^6.5.0",
+    "react-native-video": "^4.4.1",
     "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",

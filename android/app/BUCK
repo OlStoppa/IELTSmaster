@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.ieltsmaster",
+    package = "com.oliverlennon.grademyieltsspeaking",
 )
 
 android_resource(
     name = "res",
-    package = "com.ieltsmaster",
+    package = "com.oliverlennon.grademyieltsspeaking",
     res = "src/main/res",
 )
 
