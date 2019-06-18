@@ -12,8 +12,9 @@ class SectionTwoReady extends React.Component {
   componentWillUnmount() {
     Orientation.unlockAllOrientations();
   }
+
   render() {
-    const {testNumber} = this.props.navigation.state.params;
+    const { testNumber } = this.props.navigation.state.params;
     return (
       <View>
         <View style={{ width: '100%', alignSelf: 'flex-start' }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import LessonBox from '../components/UI/LessonBox';
 import lessons from '../fixtures/lessonData';
 
@@ -33,7 +33,12 @@ class LessonCategory extends React.Component {
         />
       );
     });
-    return <View style={styles.container}>{displayLessonBoxes}</View>;
+    return (
+      <View style={styles.container}>
+        {displayLessonBoxes}
+        <Text>More lessons coming soon!</Text>
+      </View>
+    );
   }
 }
 

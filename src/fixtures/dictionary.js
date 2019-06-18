@@ -48,7 +48,7 @@ const dictionary = {
   },
   subjective: {
     type: 'adjective',
-    definition: '',
+    definition: 'relating to your own personal feelings',
   },
   'springs to mind': {
     print: 'to spring to mind',
@@ -306,6 +306,10 @@ const dictionary = {
   awkward: {
     type: 'adjective',
     definition: 'embarrassed',
+  },
+  scam: {
+    type: 'noun',
+    definition: 'trick used to steal goods or money',
   },
 };
 

@@ -37,8 +37,8 @@ const modelAnswers = [
       ],
       [
         "Definitely, it's much better for an area if the buildings are ",
-        { link: 'pleasing to the eye.' },
-        ' Then again i suppose beauty is ',
+        { link: 'pleasing to the eye' },
+        '. Then again i suppose beauty is ',
         { link: 'subjective' },
         ' so what some people thinks looks nice could be horrible to others.',
       ],
@@ -61,7 +61,7 @@ const modelAnswers = [
       { link: 'in on it' },
       " too, so she had just given her secret PIN number to the people who had stolen her bag. I couldn't believe how organised these thieves were and it just goes to show that in today's world you can't trust anybody. I bet the woman in question will be much more careful with her ",
       { link: 'belongings' },
-      'in future.',
+      ' in future.',
     ],
     3: [
       [
@@ -116,19 +116,19 @@ const modelAnswers = [
       [
         "I guess it would have to be the Disney film 'Aladin'. The main reason being that we had it on DVD and used to watch it all the time. I can still remember most of the ",
         { link: 'lyrics' },
-        'to the song to this day.',
+        ' to the song to this day.',
       ],
       [
-        "There are so many I choose from but I guess I would go with 'Saving Private Ryan'. It's a war film and it's quite sad but I love the history. Also, the",
+        "There are so many I choose from but I guess I would go with 'Saving Private Ryan'. It's a war film and it's quite sad but I love the history. Also, the ",
         { link: 'cinematography' },
-        'is fantastic.',
+        ' is fantastic.',
       ],
     ],
     2: [
-      "A few years ago, I went to the UK and managed to visit London and I believe it was an experience that is definitely worth talking about. {'\n'} It's a fascinating place to visit, the main reason being because of all the awe-inspiring tourist attractions and beautiful architecture. I went there with my girlfriend and to be honest, when we were planning the trip I wasn't so ",
+      "A few years ago, I went to the UK and managed to visit London and I believe it was an experience that is definitely worth talking about. \n It's a fascinating place to visit, the main reason being because of all the awe-inspiring tourist attractions and beautiful architecture. I went there with my girlfriend and to be honest, when we were planning the trip I wasn't so ",
       { link: 'enthusiastic' },
       " because I'm a ",
-      { link: 'sun-seeker' },
+      { link: 'sunseeker' },
       ' and when I get time off to go on vacation, my usual choice would be somewhere hot with beautiful beaches and all I really knew of the UK was its reputation for ',
       { link: 'abysmal' },
       ' weather. My partner really wanted to go so that was the end of it. When we finally got there, I bought a guide book and read about the history of the sights we were going to see. I was so impressed by the Natural History Museum, you could walk around it for days. There were so many exhibits to see and learn about, but we had only scheduled one morning for it so we took in as much as we could. Then we went to view the changing of the guard at Buckingham Palace and half a dozen other ',
@@ -183,7 +183,7 @@ const modelAnswers = [
       [
         'I truly believe my home country would be a great tourist destination. We have a huge variation of cool things to do. Maybe in the years to come it will get more ',
         { link: 'recognition' },
-        'in this regard.',
+        ' in this regard.',
       ],
       [
         "Where I'm from, noodles are a staple food so I've always loved to eat many noodle dishes. ",

@@ -231,29 +231,7 @@ const lessons = {
         </YellowNote>,
       ],
     },
-    {
-      name: 'Mind-map Planning',
-      icon: 'map-signs',
-      style: {
-        backgroundColor: '#557219',
-      },
-      content: [
-        <Text key={0} style={{ fontSize: 18 }}>
-          You will be allowed 60 seconds to plan your extended answer. Test takers find that
-          planning a two minute talk in this short amount of time can be very challenging if you're
-          not prepared.{'\n'}Many of our students have found this mind-mapping technique useful.
-          {'\n\n'}
-          Consider the following question card:
-        </Text>,
-        <Image key={1} source={sportQuestion} style={{ width: '100%', resizeMode: 'contain' }} />,
-        <Text key={2} style={{ fontSize: 18 }}>
-          {' '}
-          By mind-mapping we organize our ideas in terms of{' '}
-          <BoldText>what, who, where, when, why </BoldText>and <BoldText>how.</BoldText>{' '}
-        </Text>,
-        <Image key={3} source={mindmap} style={{ width: '100%', resizeMode: 'center' }} />,
-      ],
-    },
+    
   ],
   partThree: [
     {
@@ -284,14 +262,6 @@ const lessons = {
           planning your answers for this section, check out our lesson on part 3 strategy.
         </YellowNote>,
       ],
-    },
-    {
-      name: 'Part Three Strategy',
-      icon: 'comment',
-      style: {
-        backgroundColor: '#557219',
-      },
-      content: {},
     },
   ],
 };

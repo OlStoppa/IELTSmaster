@@ -2,19 +2,11 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import MainText from './MainText';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View style={[styles.container, this.props.style]}>
-        <MainText style={[styles.text, this.props.textStyle]}>{this.props.children}</MainText>
-      </View>
-    );
-  }
-}
+const Header = props => (
+  <View style={[styles.container, props.style]}>
+    <MainText style={[styles.text, props.textStyle]}>{props.children}</MainText>
+  </View>
+);
 
 export default Header;
 
