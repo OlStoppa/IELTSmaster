@@ -141,6 +141,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-audio-record')
     compile project(':react-native-orientation')
     compile project(':rn-fetch-blob')
     compile project(':react-native-svg')

@@ -18,14 +18,9 @@ class AuthScreen extends React.Component {
   };
 
   textChangeHandler = val => {
-    this.setState(
-      {
-        value: val,
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState({
+      value: val,
+    });
   };
 
   handleSubmit = () => {

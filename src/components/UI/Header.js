@@ -10,7 +10,7 @@ class Header extends React.Component {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <MainText style={styles.text}>{this.props.children}</MainText>
+        <MainText style={[styles.text, this.props.textStyle]}>{this.props.children}</MainText>
       </View>
     );
   }

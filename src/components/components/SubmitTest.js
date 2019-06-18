@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
+import moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../UI/DefaultInput';
 import ProgressButton from '../UI/ProgressButton';
@@ -26,6 +27,8 @@ class SubmitTest extends React.Component {
       },
       touched: false,
     },
+    uploading: false,
+    finished: false,
   };
 
   updateInputState = (key, value) => {
@@ -79,20 +82,19 @@ class SubmitTest extends React.Component {
     ];
     Promise.all(
       thisTest.map((answer, index) => {
-        const ref = storage.ref(`${name}/${index}.mp4`);
+        const ref = storage.ref(`${name}-${this.props.id}-${moment().format()}/${index}.wav`);
         const { Blob } = RNFetchBlob.polyfill;
-        const { fs } = RNFetchBlob;
-        const path = answer.slice(7);
+        const path = answer;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
         const audioFile = RNFetchBlob.wrap(path);
         console.log(audioFile);
         let uploadBlob = null;
-        Blob.build(audioFile, { type: 'media/mp4;' })
+        Blob.build(audioFile, { type: 'media/wave;' })
           .then(audioBlob => {
             uploadBlob = audioBlob;
             return ref.put(audioBlob, {
-              contentType: 'media/mp4',
+              contentType: 'media/wave',
               customMetadata: {
                 email,
               },
@@ -103,59 +105,68 @@ class SubmitTest extends React.Component {
           });
       })
     ).then(() => {
-      this.setState({ uploading: false });
+      this.setState({ uploading: false, finished: true });
     });
   };
 
   render() {
-    console.log(this.props.answers);
     return (
       <Modal visible={this.props.visible} onRequestClose={() => {}} animationType="slide">
-        <Header style={{ height: 50 }}>Get Your Band Score</Header>
+        <Header style={{ height: 50 }} textStyle={{ fontSize: 20 }}>Get Your Band Score</Header>
         <TouchableOpacity onPress={this.props.closeModal} style={styles.closeButton}>
-          <Icon name="ios-arrow-back" color="white" size={34} />
+          <Icon name="ios-arrow-back" color="white" size={30} />
         </TouchableOpacity>
-        <View style={styles.container}>
-          <View style={styles.note}>
-            {this.state.uploading ? (
-              <Text>Uploading</Text>
-            ) : (
-              <Text>
-                Submit your test for grading by our team of experienced IELTS tutors. You will
-                recieve your band score and feedback to the E-mail provided within 24 hours.
-              </Text>
-            )}
+        {this.state.finished ? (
+          <View style={styles.container}>
+            <Text>
+              Thanks! You will recieve a report of your band score and feedback to the email
+              provided within 48 hours. Good luck!
+            </Text>
           </View>
+        ) : (
+          <View style={styles.container}>
+            <View style={styles.note}>
+              {this.state.uploading ? (
+                <Text>Uploading</Text>
+              ) : (
+                <Text>
+                  Submit your test for grading by our team of experienced IELTS tutors. You will
+                  recieve your band score and feedback to the E-mail provided within 24 hours.
+                </Text>
+              )}
+            </View>
 
-          <View style={styles.formBox}>
-            <DefaultInput
-              placeholder="Your Email"
-              value={this.state.email.value}
-              onChangeText={val => this.updateInputState('email', val)}
-              valid={this.state.email.valid}
-              touched={this.state.email.touched}
-            />
-            <DefaultInput
-              placeholder="Confirm Email"
-              value={this.state.confirmEmail.value}
-              onChangeText={val => this.updateInputState('confirmEmail', val)}
-              valid={this.state.confirmEmail.valid}
-              touched={this.state.confirmEmail.touched}
-            />
-            <ProgressButton
-              text="Submit"
-              disabled={!this.state.confirmEmail.valid || !this.state.email.valid}
-              onPress={() => {
-                this.handleUploadAnswers(
-                  this.state.email.value,
-                  this.props.name,
-                  this.props.answers,
-                  this.props.testNumber
-                );
-              }}
-            />
+            <View style={styles.formBox}>
+              <DefaultInput
+                placeholder="Your Email"
+                value={this.state.email.value}
+                onChangeText={val => this.updateInputState('email', val)}
+                valid={this.state.email.valid}
+                touched={this.state.email.touched}
+              />
+              <DefaultInput
+                placeholder="Confirm Email"
+                value={this.state.confirmEmail.value}
+                onChangeText={val => this.updateInputState('confirmEmail', val)}
+                valid={this.state.confirmEmail.valid}
+                touched={this.state.confirmEmail.touched}
+              />
+              <ProgressButton
+                text="Submit"
+                disabled={!this.state.confirmEmail.valid || !this.state.email.valid}
+                onPress={() => {
+                  this.handleUploadAnswers(
+                    this.state.email.value,
+                    this.props.name,
+                    this.props.answers,
+                    this.props.testNumber,
+                    this.props.id,
+                  );
+                }}
+              />
+            </View>
           </View>
-        </View>
+        )}
       </Modal>
     );
   }
@@ -194,6 +205,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 50,
-    width: 70
+    width: 70,
   },
 });

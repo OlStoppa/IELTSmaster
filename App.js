@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -13,6 +14,7 @@ import {
   createSwitchNavigator,
   createMaterialTopTabNavigator,
 } from 'react-navigation';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -103,7 +105,7 @@ const MainNavigator = createStackNavigator(
       screen: LessonScreen,
     },
     ExampleTestParts: { screen: ExampleTestParts },
-    AnswersScreen: { screen: AnswersScreen }
+    AnswersScreen: { screen: AnswersScreen },
   },
   {
     cardStyle: {
@@ -137,14 +139,6 @@ const AppNavigator = createSwitchNavigator(
 const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
-  _storeData = async data => {
-    try {
-      await AsyncStorage.setItem('userToken', data);
-    } catch (error) {
-      console.log('error');
-    }
-  };
-
   componentWillUnmount() {
     if (this.props.name) {
       const token = {
@@ -156,6 +150,14 @@ class App extends React.Component {
       this._storeData(data);
     }
   }
+
+  _storeData = async data => {
+    try {
+      await AsyncStorage.setItem('userToken', data);
+    } catch (error) {
+      console.log('error');
+    }
+  };
 
   render() {
     return <AppContainer />;
@@ -171,3 +173,9 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(App);
+
+App.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  answers: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

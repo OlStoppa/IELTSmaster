@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
+import AudioRecord from 'react-native-audio-record';
 import Permissions from 'react-native-permissions';
 import StopButton from './StopButton';
 import DeleteButton from './DeleteButton';
@@ -14,37 +15,49 @@ class AnswerButton extends React.Component {
     this.audioRecorderPlayer = new AudioRecorderPlayer();
   }
 
+  options = {
+    sampleRate: 16000, // default 44100
+    channels: 1, // 1 or 2, default 1
+    bitsPerSample: 16, // 8 or 16, default 16
+    audioSource: 1, // android only (see below)
+    wavFile: `test${this.props.testNumber}_${this.props.part}_question${this.props.index}.wav`
+  };
+
   state = {
     recording: false,
     recordingPath: '',
     playing: false,
+    
   };
 
+  componentDidMount() {
+    this._isMounted = true;
+    this.permissionCheck();
+  }
+
+  componentWillUnmount() {
+    this.isMounted = false;
+    if (this.state.playing === true) {
+      this.audioRecorderPlayer.stopPlayer().catch(() => {});
+    }
+    if (this.state.recording === true) {
+      this.audioRecorderPlayer.stopRecorder();
+    }
+  }
+
+
   onStartRecord = async () => {
-    const result = await this.audioRecorderPlayer.startRecorder(
-      `sdcard/test${this.props.testNumber}_${this.props.part}_question${this.props.index}.mp4`
-    );
-    this.setState({
-      recording: true,
-      recordingPath: result,
-    });
-    this.audioRecorderPlayer.addRecordBackListener(e => {
-      // this.setState({
-      //   recordSecs: e.current_position,
-      //   recordTime: this.audioRecorderPlayer.mmssss(Math.floor(e.current_position)),
-      // });
-      
-    });
-    console.log(result);
+    
+    AudioRecord.init(this.options);
+    AudioRecord.start();
+    this.setState({ recording: true });
   };
 
   onStopRecord = async () => {
-    const result = await this.audioRecorderPlayer.stopRecorder();
-    //   this.audioRecorderPlayer.removeRecordBackListener();
-    //   this.setState({
-    //     recordSecs: 0,
-    //   });
+    
     this._isMounted === true && this.setState({ recording: false });
+    const result = await AudioRecord.stop();
+    this.setState({ recordingPath: result });
     this.props.onAddAnswer(
       this.state.recordingPath,
       this.props.testNumber,
@@ -57,7 +70,8 @@ class AnswerButton extends React.Component {
   onStartPlay = async path => {
     console.log('onStartPlay');
     const playerPath = path.substring(6);
-    const msg = await this.audioRecorderPlayer.startPlayer(playerPath);
+    this.audioRecorderPlayer.setVolume(1.0).catch(() => {});
+    const msg = await this.audioRecorderPlayer.startPlayer(path).catch(() => {});
     this._isMounted && this.setState({ playing: true });
     console.log(msg);
     this.audioRecorderPlayer.addPlayBackListener(e => {
@@ -72,7 +86,6 @@ class AnswerButton extends React.Component {
       //     playTime: this.audioRecorderPlayer.mmssss(Math.floor(e.current_position)),
       //     duration: this.audioRecorderPlayer.mmssss(Math.floor(e.duration)),
       //   });
-      
     });
   };
 
@@ -94,21 +107,7 @@ class AnswerButton extends React.Component {
     }
   };
 
-  componentDidMount() {
-    this._isMounted = true;
-    this.permissionCheck();
-  }
-
-  componentWillUnmount() {
-    this.isMounted = false;
-    if (this.state.playing === true) {
-      this.audioRecorderPlayer.stopPlayer().catch(() => {});
-    }
-    if (this.state.recording === true) {
-      this.audioRecorderPlayer.stopRecorder();
-    }
-  }
-
+  
   render() {
     const { index, answerPath, testNumber, part } = this.props;
 
@@ -122,7 +121,7 @@ class AnswerButton extends React.Component {
                 onStopRecord={() => {
                   this.audioRecorderPlayer.stopPlayer().catch(() => {});
                   if (this._isMounted === true) {
-                   this.setState({ playing: false });
+                    this.setState({ playing: false });
                   }
                 }}
               />
