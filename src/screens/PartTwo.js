@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import Orientation from 'react-native-orientation';
 import AnswerButton from '../components/UI/AnswerButton';
 import testData from '../fixtures/testData';
 import Countdown from '../components/components/Countdown';
@@ -17,10 +18,15 @@ class PartTwo extends React.Component {
   };
 
   componentDidMount() {
+    Orientation.lockToPortrait();
     const { testNumber } = this.props.navigation.state.params;
     if (this.props.answers.part2[testNumber][0] !== 0) {
       this.handleCountdown();
     }
+  }
+
+  componentWillUnmount() {
+    Orientation.unlockAllOrientations();
   }
 
   handleDeleteAnswer = (index, testNumber, part) => {

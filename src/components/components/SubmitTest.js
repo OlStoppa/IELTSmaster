@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Modal, Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,6 +8,7 @@ import ProgressButton from '../UI/ProgressButton';
 import validate from '../../utility/validation';
 import Header from '../UI/Header';
 import { storage } from '../../firebase';
+import gradeMy from '../../assets/gradeMy.png';
 
 class SubmitTest extends React.Component {
   state = {
@@ -112,16 +113,33 @@ class SubmitTest extends React.Component {
   render() {
     return (
       <Modal visible={this.props.visible} onRequestClose={() => {}} animationType="slide">
-        <Header style={{ height: 50 }} textStyle={{ fontSize: 20 }}>Get Your Band Score</Header>
+        <Header style={{ height: 50 }} textStyle={{ fontSize: 20 }}>
+          Get Your Band Score
+        </Header>
         <TouchableOpacity onPress={this.props.closeModal} style={styles.closeButton}>
           <Icon name="ios-arrow-back" color="white" size={30} />
         </TouchableOpacity>
         {this.state.finished ? (
           <View style={styles.container}>
-            <Text>
-              Thanks! You will recieve a report of your band score and feedback to the email
-              provided within 48 hours. Good luck!
-            </Text>
+            <View
+              style={{
+                height: '90%',
+                width: '100%',
+                alignItems: 'center',
+                padding: 20,
+
+                backgroundColor: 'white',
+              }}
+            >
+              <Text style={{ fontSize: 25, marginBottom: 30 }}>Answers Submitted!</Text>
+              <Text>
+                You will recieve a report of your band score and feedback to{' '}
+                {this.state.email.value}
+                within 48 hours.
+              </Text>
+              <Text>Good Luck!</Text>
+              <Image source={gradeMy} style={{ width: '50%', resizeMode: 'contain' }} />
+            </View>
           </View>
         ) : (
           <View style={styles.container}>
@@ -160,7 +178,7 @@ class SubmitTest extends React.Component {
                     this.props.name,
                     this.props.answers,
                     this.props.testNumber,
-                    this.props.id,
+                    this.props.id
                   );
                 }}
               />

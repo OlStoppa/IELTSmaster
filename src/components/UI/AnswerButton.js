@@ -20,14 +20,13 @@ class AnswerButton extends React.Component {
     channels: 1, // 1 or 2, default 1
     bitsPerSample: 16, // 8 or 16, default 16
     audioSource: 1, // android only (see below)
-    wavFile: `test${this.props.testNumber}_${this.props.part}_question${this.props.index}.wav`
+    wavFile: `test${this.props.testNumber}_${this.props.part}_question${this.props.index}.wav`,
   };
 
   state = {
     recording: false,
     recordingPath: '',
     playing: false,
-    
   };
 
   componentDidMount() {
@@ -45,16 +44,13 @@ class AnswerButton extends React.Component {
     }
   }
 
-
   onStartRecord = async () => {
-    
     AudioRecord.init(this.options);
     AudioRecord.start();
     this.setState({ recording: true });
   };
 
   onStopRecord = async () => {
-    
     this._isMounted === true && this.setState({ recording: false });
     const result = await AudioRecord.stop();
     this.setState({ recordingPath: result });
@@ -107,7 +103,6 @@ class AnswerButton extends React.Component {
     }
   };
 
-  
   render() {
     const { index, answerPath, testNumber, part } = this.props;
 
@@ -133,6 +128,9 @@ class AnswerButton extends React.Component {
             <DeleteButton
               onDeleteAnswer={() => {
                 this.props.onDeleteAnswer(index, testNumber, part);
+                if (this.state.playing) {
+                  this.audioRecorderPlayer.stopPlayer().catch(() => {});
+                }
               }}
             />
           </View>

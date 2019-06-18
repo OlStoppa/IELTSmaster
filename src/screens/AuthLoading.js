@@ -27,7 +27,7 @@ class AuthLoadingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
-        <Image source={logo} />
+        <Image source={logo} style={{width: '70%', resizeMode: 'contain'}}/>
       </View>
     );
   }
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#66A5AD',
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 });

@@ -61,7 +61,7 @@ class AuthScreen extends React.Component {
       >
         <View style={styles.container}>
           <View style={styles.form}>
-            <MainText>Choose a Username</MainText>
+            <MainText textStyle={{ fontSize: 24 }}>Choose a Username</MainText>
             <DefaultInput placeholder="username" onChangeText={this.textChangeHandler} />
             <Button title="Login" onPress={this.handleSubmit} disabled={!this.state.value} />
           </View>

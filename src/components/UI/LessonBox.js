@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   label: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 18,
     fontWeight: '400',
   },
 });

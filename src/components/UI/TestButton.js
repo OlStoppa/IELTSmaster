@@ -16,7 +16,7 @@ const TestButton = props => {
             <Text style={{ fontSize: 20, color: 'white' }}>{props.children}</Text>
           </View>
           <View style={{ alignSelf: 'flex-end', width: '40%' }}>
-            <Text style={{ fontSize: 100, color: 'white' }}>{props.index + 1}</Text>
+            <Text style={{ fontSize: 80, color: 'white' }}>{props.index + 1}</Text>
           </View>
         </View>
         <View style={styles.footer}>

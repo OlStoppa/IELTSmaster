@@ -1,9 +1,17 @@
 import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
+import Orientation from 'react-native-orientation';
 import MainText from '../components/UI/MainText';
 import Header from '../components/UI/Header';
 
 class SectionTwoReady extends React.Component {
+  componentDidMount() {
+    Orientation.lockToPortrait();
+  }
+
+  componentWillUnmount() {
+    Orientation.unlockAllOrientations();
+  }
   render() {
     const {testNumber} = this.props.navigation.state.params;
     return (
