@@ -62,6 +62,7 @@ class SubmitTest extends React.Component {
   }
 
   async componentDidMount() {
+    console.log("mounting submit");
     try {
       const result = await RNIap.initConnection();
       purchaseUpdate = RNIap.purchaseUpdatedListener(() => {
@@ -86,6 +87,7 @@ class SubmitTest extends React.Component {
   }
 
   componentWillUnmount() {
+    console.log("unmounting submit");
     RNIap.endConnectionAndroid();
   }
 
@@ -153,6 +155,7 @@ class SubmitTest extends React.Component {
         const ref = storage.ref(`${name}-${this.props.id}-${timeStamp}/${index}.wav`);
         const { Blob } = RNFetchBlob.polyfill;
         const path = answer;
+        const { fs } = RNFetchBlob;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
         const audioFile = RNFetchBlob.wrap(path);
@@ -161,6 +164,7 @@ class SubmitTest extends React.Component {
         Blob.build(audioFile, { type: 'media/wave;' })
           .then(audioBlob => {
             uploadBlob = audioBlob;
+            console.log("iploading a file")
             return ref.put(audioBlob, {
               contentType: 'media/wave',
               customMetadata: {
@@ -169,10 +173,12 @@ class SubmitTest extends React.Component {
             });
           })
           .then(() => {
+            console.log("closing blob");
             return uploadBlob.close();
           });
       })
     ).then(() => {
+      console.log("finished uploading");
       this.setState({ uploading: false, finished: true });
     });
   };
