@@ -40,7 +40,7 @@ class AnswerButton extends React.Component {
       this.audioRecorderPlayer.stopPlayer().catch(() => {});
     }
     if (this.state.recording === true) {
-      this.audioRecorderPlayer.stopRecorder();
+      this.onStopRecord();
     }
   }
 
@@ -60,14 +60,15 @@ class AnswerButton extends React.Component {
       this.props.index,
       this.props.part
     );
-    console.log(result);
+    
   };
 
   onStartPlay = async path => {
     console.log('onStartPlay');
-    const playerPath = path.substring(6);
+    
     this.audioRecorderPlayer.setVolume(1.0).catch(() => {});
     const msg = await this.audioRecorderPlayer.startPlayer(path).catch(() => {});
+    console.log(path);
     this._isMounted && this.setState({ playing: true });
     console.log(msg);
     this.audioRecorderPlayer.addPlayBackListener(e => {
@@ -124,7 +125,7 @@ class AnswerButton extends React.Component {
               <PlayButton onQuestionPlay={() => this.onStartPlay(answerPath)} />
             )}
           </View>
-          <View>
+          <View style={{position: 'absolute', top: '60%', left: 10}}>
             <DeleteButton
               onDeleteAnswer={() => {
                 this.props.onDeleteAnswer(index, testNumber, part);

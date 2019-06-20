@@ -3,6 +3,7 @@ package com.oliverlennon.grademyieltsspeaking;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dooboolab.RNIap.RNIapPackage;
 import com.goodatlas.audiorecord.RNAudioRecordPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNIapPackage(),
             new RNAudioRecordPackage(),
             new OrientationPackage(),
             new RNFetchBlobPackage(),

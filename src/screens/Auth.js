@@ -2,11 +2,13 @@ import React from 'react';
 import { View, StyleSheet, Button, ImageBackground, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import uuid from 'uuid/v4';
+
 import DefaultInput from '../components/UI/DefaultInput';
 import MainText from '../components/UI/MainText';
 import { setInit } from '../store/actions/answers';
 import london from '../assets/london.jpg';
+
+const uuid = require('uuid/v4');
 
 class AuthScreen extends React.Component {
   static navigationOptions = {

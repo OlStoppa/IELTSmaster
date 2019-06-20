@@ -1,6 +1,16 @@
 import React from 'react';
-import { Modal, Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import {
+  Modal,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Platform,
+  Alert,
+} from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
+import * as RNIap from 'react-native-iap';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../UI/DefaultInput';
@@ -9,6 +19,12 @@ import validate from '../../utility/validation';
 import Header from '../UI/Header';
 import { storage } from '../../firebase';
 import gradeMy from '../../assets/gradeMy.png';
+
+const itemSkus = Platform.select({
+  android: ['android.test.purchased'],
+});
+let purchaseUpdate;
+let purchaseError;
 
 class SubmitTest extends React.Component {
   state = {
@@ -30,6 +46,55 @@ class SubmitTest extends React.Component {
     },
     uploading: false,
     finished: false,
+    products: {},
+    paid: false,
+  };
+
+  componentWillMount() {
+    if (purchaseUpdate) {
+      purchaseUpdate.remove();
+      purchaseUpdate = null;
+    }
+    if (purchaseError) {
+      purchaseError.remove();
+      purchaseError = null;
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const result = await RNIap.initConnection();
+      purchaseUpdate = RNIap.purchaseUpdatedListener(() => {
+        // eslint-disable-next-line react/prop-types
+        console.log(this.props);
+        const { email, name, answers, testNumber } = this.props;
+        this.setState({ paid: true }, this.handleUploadAnswers(email, name, answers, testNumber));
+
+        RNIap.consumeAllItemsAndroid();
+      });
+
+      purchaseError = RNIap.purchaseErrorListener((error: PurchaseError) => {
+        console.log('purchaseErrorListener', error);
+        Alert.alert('purchase error', JSON.stringify(error));
+      });
+
+      const products = await RNIap.getProducts(itemSkus);
+      this.setState({ products });
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
+  componentWillUnmount() {
+    RNIap.endConnectionAndroid();
+  }
+
+  purchaseProduct = async () => {
+    try {
+      await RNIap.requestPurchase('android.test.purchased');
+    } catch (err) {
+      console.warn(err.code, err.message);
+    }
   };
 
   updateInputState = (key, value) => {
@@ -81,9 +146,11 @@ class SubmitTest extends React.Component {
       ...answers.part2[testNumber],
       ...answers.part3[testNumber],
     ];
+
+    const timeStamp = moment().format();
     Promise.all(
       thisTest.map((answer, index) => {
-        const ref = storage.ref(`${name}-${this.props.id}-${moment().format()}/${index}.wav`);
+        const ref = storage.ref(`${name}-${this.props.id}-${timeStamp}/${index}.wav`);
         const { Blob } = RNFetchBlob.polyfill;
         const path = answer;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
@@ -172,15 +239,7 @@ class SubmitTest extends React.Component {
               <ProgressButton
                 text="Submit"
                 disabled={!this.state.confirmEmail.valid || !this.state.email.valid}
-                onPress={() => {
-                  this.handleUploadAnswers(
-                    this.state.email.value,
-                    this.props.name,
-                    this.props.answers,
-                    this.props.testNumber,
-                    this.props.id
-                  );
-                }}
+                onPress={this.purchaseProduct}
               />
             </View>
           </View>

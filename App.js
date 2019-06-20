@@ -14,6 +14,7 @@ import {
   createSwitchNavigator,
   createMaterialTopTabNavigator,
 } from 'react-navigation';
+import * as RNIap from "react-native-iap";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AsyncStorage } from 'react-native';
@@ -139,6 +140,7 @@ const AppNavigator = createSwitchNavigator(
 const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
+
   componentWillUnmount() {
     if (this.props.name) {
       const token = {

@@ -180,6 +180,7 @@ const mapStateToProps = state => {
   return {
     answers: state.answers.answers,
     name: state.answers.name,
+    id: state.answers.id,
   };
 };
 

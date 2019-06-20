@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class Countdown extends React.Component {
   state = {
-    count: 60,
+    count: 2,
   };
 
   componentDidMount() {
