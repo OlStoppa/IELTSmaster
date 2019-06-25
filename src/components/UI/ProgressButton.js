@@ -22,7 +22,7 @@ export default ProgressButton;
 
 const styles = StyleSheet.create({
   progressButton: {
-    height: 50,
+    height: 40,
     borderRadius: 50,
     borderWidth: 3,
     borderColor: 'white',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttonText: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: '400',
     color: 'white',
   },

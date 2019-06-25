@@ -22,7 +22,7 @@ import { storage } from '../../firebase';
 import gradeMy from '../../assets/gradeMy.png';
 
 const itemSkus = Platform.select({
-  android: ['android.test.purchased'],
+  android: ['test_feedback_bandscore'],
 });
 let purchaseUpdate;
 let purchaseError;
@@ -94,7 +94,7 @@ class SubmitTest extends React.Component {
 
   purchaseProduct = async () => {
     try {
-      await RNIap.requestPurchase('android.test.purchased');
+      await RNIap.requestPurchase('test_feedback_bandscore');
     } catch (err) {
       console.warn(err.code, err.message);
     }

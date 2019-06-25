@@ -178,6 +178,6 @@ export default connect(mapStateToProps)(App);
 
 App.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  answers: PropTypes.arrayOf(PropTypes.any).isRequired,
+  id: PropTypes.string.isRequired,
+  answers: PropTypes.objectOf(PropTypes.any).isRequired,
 };
