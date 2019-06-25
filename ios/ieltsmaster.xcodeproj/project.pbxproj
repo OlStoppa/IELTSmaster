@@ -63,8 +63,8 @@
 		5EDF9A97D63C4F5DB778E1C3 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4129F5194C4CDD9AA03C29 /* libRNFetchBlob.a */; };
 		C13D917D887F492D84769172 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA88DEA58042D2B4DD3691 /* libRCTOrientation.a */; };
 		8D660DFD5A704CB1B5811564 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B611A87A76A34B75A9BA4232 /* libReactNativePermissions.a */; };
-		ECAD438C6CD14C42B6B1E5FB /* libRNAudioRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63E98D8FED4208A1537B29 /* libRNAudioRecord.a */; };
 		2B3BA4BA0E0C418F836B31A5 /* libRNIap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B79443984C48C4A52CC516 /* libRNIap.a */; };
+		8CB3B1C8F7D146ED85D3936E /* libRNAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC4465BE6BC40349D4A41D2 /* libRNAudio.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,10 +405,10 @@
 		5BCA88DEA58042D2B4DD3691 /* libRCTOrientation.a */ = {isa = PBXFileReference; name = "libRCTOrientation.a"; path = "libRCTOrientation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		29E5930CB7A84ABE8E89AB53 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativePermissions.xcodeproj"; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B611A87A76A34B75A9BA4232 /* libReactNativePermissions.a */ = {isa = PBXFileReference; name = "libReactNativePermissions.a"; path = "libReactNativePermissions.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		30B060442D1C455C8EE64761 /* RNAudioRecord.xcodeproj */ = {isa = PBXFileReference; name = "RNAudioRecord.xcodeproj"; path = "../node_modules/react-native-audio-record/ios/RNAudioRecord.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		9F63E98D8FED4208A1537B29 /* libRNAudioRecord.a */ = {isa = PBXFileReference; name = "libRNAudioRecord.a"; path = "libRNAudioRecord.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		713E3E4384604ADA900EFAA9 /* RNIap.xcodeproj */ = {isa = PBXFileReference; name = "RNIap.xcodeproj"; path = "../node_modules/react-native-iap/ios/RNIap.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		52B79443984C48C4A52CC516 /* libRNIap.a */ = {isa = PBXFileReference; name = "libRNIap.a"; path = "libRNIap.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		4D755BB861B44FA385B9334F /* RNAudio.xcodeproj */ = {isa = PBXFileReference; name = "RNAudio.xcodeproj"; path = "../node_modules/react-native-audio/ios/RNAudio.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		CEC4465BE6BC40349D4A41D2 /* libRNAudio.a */ = {isa = PBXFileReference; name = "libRNAudio.a"; path = "libRNAudio.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,8 +445,8 @@
 				5EDF9A97D63C4F5DB778E1C3 /* libRNFetchBlob.a in Frameworks */,
 				C13D917D887F492D84769172 /* libRCTOrientation.a in Frameworks */,
 				8D660DFD5A704CB1B5811564 /* libReactNativePermissions.a in Frameworks */,
-				ECAD438C6CD14C42B6B1E5FB /* libRNAudioRecord.a in Frameworks */,
 				2B3BA4BA0E0C418F836B31A5 /* libRNIap.a in Frameworks */,
+				8CB3B1C8F7D146ED85D3936E /* libRNAudio.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,8 +644,8 @@
 				B4C94B9C9A954275ADE34243 /* RNFetchBlob.xcodeproj */,
 				EB17B7CE7D894C72987C2DBA /* RCTOrientation.xcodeproj */,
 				29E5930CB7A84ABE8E89AB53 /* ReactNativePermissions.xcodeproj */,
-				30B060442D1C455C8EE64761 /* RNAudioRecord.xcodeproj */,
 				713E3E4384604ADA900EFAA9 /* RNIap.xcodeproj */,
+				4D755BB861B44FA385B9334F /* RNAudio.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1312,14 +1312,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ieltsmaster.app/ieltsmaster";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1332,8 +1324,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Debug;
@@ -1355,14 +1347,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ieltsmaster.app/ieltsmaster";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1375,8 +1359,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Release;
@@ -1408,8 +1392,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Debug;
@@ -1440,8 +1424,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Release;
@@ -1471,14 +1455,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1491,8 +1467,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Debug;
@@ -1522,14 +1498,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1542,8 +1510,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Release;
@@ -1572,14 +1540,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1592,8 +1552,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Debug;
@@ -1622,14 +1582,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1642,8 +1594,8 @@
 					"$(SRCROOT)\..\node_modules\rn-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-orientation\iOS\RCTOrientation/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-audio-record\ios",
 					"$(SRCROOT)\..\node_modules\react-native-iap\ios",
+					"$(SRCROOT)\..\node_modules\react-native-audio\ios",
 				);
 			};
 			name = Release;

@@ -21,7 +21,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-native": "^0.57.8",
-    "react-native-audio-record": "^0.2.0",
+    "react-native-audio": "^4.3.0",
     "react-native-audio-recorder-player": "^2.1.4",
     "react-native-circular-progress": "^1.1.0",
     "react-native-dotenv": "^0.2.0",

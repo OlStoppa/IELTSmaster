@@ -8,6 +8,7 @@ import {
   Image,
   Platform,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import * as RNIap from 'react-native-iap';
@@ -62,7 +63,7 @@ class SubmitTest extends React.Component {
   }
 
   async componentDidMount() {
-    console.log("mounting submit");
+    console.log('mounting submit');
     try {
       const result = await RNIap.initConnection();
       purchaseUpdate = RNIap.purchaseUpdatedListener(() => {
@@ -87,7 +88,7 @@ class SubmitTest extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("unmounting submit");
+    console.log('unmounting submit');
     RNIap.endConnectionAndroid();
   }
 
@@ -148,37 +149,40 @@ class SubmitTest extends React.Component {
       ...answers.part2[testNumber],
       ...answers.part3[testNumber],
     ];
+    const { Blob } = RNFetchBlob.polyfill;
+
+    const { fs } = RNFetchBlob;
+    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+    window.Blob = Blob;
 
     const timeStamp = moment().format();
     Promise.all(
       thisTest.map((answer, index) => {
-        const ref = storage.ref(`${name}-${this.props.id}-${timeStamp}/${index}.wav`);
-        const { Blob } = RNFetchBlob.polyfill;
-        const path = answer;
-        const { fs } = RNFetchBlob;
-        window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-        window.Blob = Blob;
-        const audioFile = RNFetchBlob.wrap(path);
+        const ref = storage.ref(`${name}-${this.props.id}-${timeStamp}/${index}.mp4`);
+        const audioFile = RNFetchBlob.wrap(answer);
         console.log(audioFile);
         let uploadBlob = null;
-        Blob.build(audioFile, { type: 'media/wave;' })
+        return Blob.build(audioFile, { type: 'media/mp4' })
           .then(audioBlob => {
             uploadBlob = audioBlob;
-            console.log("iploading a file")
-            return ref.put(audioBlob, {
-              contentType: 'media/wave',
+            console.log('iploading a file');
+            return ref.put(uploadBlob, {
+              contentType: 'media/mp4',
               customMetadata: {
                 email,
               },
             });
           })
-          .then(() => {
-            console.log("closing blob");
-            return uploadBlob.close();
+          .then(audioBlob => {
+            console.log('closing blob');
+            return audioBlob.close();
+          })
+          .catch(err => {
+            console.log(err);
           });
       })
     ).then(() => {
-      console.log("finished uploading");
+      console.log('finished uploading');
       this.setState({ uploading: false, finished: true });
     });
   };
@@ -216,16 +220,31 @@ class SubmitTest extends React.Component {
           </View>
         ) : (
           <View style={styles.container}>
-            <View style={styles.note}>
+            
               {this.state.uploading ? (
-                <Text>Uploading</Text>
+                <View
+                  style={{
+                    display: 'flex',
+                    position: 'absolute',
+                    height: '100%',
+                    width: '100%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(0,0,0, 0.8)',
+                    zIndex: 20,
+                  }}
+                >
+                  <ActivityIndicator />
+                </View>
               ) : (
+                <View style={styles.note}>
                 <Text>
                   Submit your test for grading by our team of experienced IELTS tutors. You will
                   recieve your band score and feedback to the E-mail provided within 24 hours.
                 </Text>
+                </View>
               )}
-            </View>
+            
 
             <View style={styles.formBox}>
               <DefaultInput

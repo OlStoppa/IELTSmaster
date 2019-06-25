@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
-import AudioRecord from 'react-native-audio-record';
 import Permissions from 'react-native-permissions';
+import { AudioRecorder, AudioUtils } from 'react-native-audio';
 import StopButton from './StopButton';
 import DeleteButton from './DeleteButton';
 import PlayButton from './PlayButton';
@@ -14,14 +14,6 @@ class AnswerButton extends React.Component {
     this._isMounted = false;
     this.audioRecorderPlayer = new AudioRecorderPlayer();
   }
-
-  options = {
-    sampleRate: 16000, // default 44100
-    channels: 1, // 1 or 2, default 1
-    bitsPerSample: 16, // 8 or 16, default 16
-    audioSource: 1, // android only (see below)
-    wavFile: `test${this.props.testNumber}_${this.props.part}_question${this.props.index}.wav`,
-  };
 
   state = {
     recording: false,
@@ -44,28 +36,38 @@ class AnswerButton extends React.Component {
     }
   }
 
-  onStartRecord = async () => {
-    AudioRecord.init(this.options);
-    AudioRecord.start();
+  onStartRecord = () => {
+    const audioPath = `${AudioUtils.DocumentDirectoryPath}/test${this.props.testNumber}_${
+      this.props.part
+    }_question${this.props.index}.mp4`;
+    AudioRecorder.prepareRecordingAtPath(audioPath, {
+      SampleRate: 22050,
+      Channels: 1,
+      AudioQuality: 'Low',
+      AudioEncoding: 'mpeg_4',
+    });
+    AudioRecorder.startRecording();
     this.setState({ recording: true });
   };
 
   onStopRecord = async () => {
     this._isMounted === true && this.setState({ recording: false });
-    const result = await AudioRecord.stop();
-    this.setState({ recordingPath: result });
+    const filePath = await AudioRecorder.stopRecording();
+    console.log(filePath);
+    this.setState({
+      recordingPath: filePath,
+    });
     this.props.onAddAnswer(
       this.state.recordingPath,
       this.props.testNumber,
       this.props.index,
       this.props.part
     );
-    
   };
 
   onStartPlay = async path => {
     console.log('onStartPlay');
-    
+
     this.audioRecorderPlayer.setVolume(1.0).catch(() => {});
     const msg = await this.audioRecorderPlayer.startPlayer(path).catch(() => {});
     console.log(path);
@@ -125,7 +127,7 @@ class AnswerButton extends React.Component {
               <PlayButton onQuestionPlay={() => this.onStartPlay(answerPath)} />
             )}
           </View>
-          <View style={{position: 'absolute', top: '60%', left: 10}}>
+          <View style={{ position: 'absolute', top: '60%', left: 10 }}>
             <DeleteButton
               onDeleteAnswer={() => {
                 this.props.onDeleteAnswer(index, testNumber, part);
