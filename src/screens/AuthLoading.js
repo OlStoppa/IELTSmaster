@@ -27,7 +27,7 @@ class AuthLoadingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
-        <Image source={logo} style={{width: '70%', resizeMode: 'contain'}}/>
+        <Image source={logo} style={{ width: '70%', resizeMode: 'contain' }} />
       </View>
     );
   }

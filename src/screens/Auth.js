@@ -46,7 +46,7 @@ class AuthScreen extends React.Component {
     try {
       await AsyncStorage.setItem('userToken', data);
     } catch (error) {
-      console.log('error');
+      
     }
   };
 

@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.oliverlennon.grademyieltsspeaking">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -6,6 +7,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission
+          android:name="android.permission.READ_PHONE_STATE"
+          tools:node="remove" />
 
     <application
       android:name=".MainApplication"
