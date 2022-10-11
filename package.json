@@ -21,7 +21,7 @@
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-native": "^0.57.8",
+    "react-native": "^0.70.2",
     "react-native-audio": "^4.3.0",
     "react-native-audio-recorder-player": "^2.1.4",
     "react-native-circular-progress": "^1.1.0",
